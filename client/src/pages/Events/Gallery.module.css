@@ -1,0 +1,163 @@
+.showcase {
+  width: 100%;
+  padding: 3.2rem 15.8rem;
+  padding-bottom: 9.6rem;
+  background-color: #fff;
+}
+
+.showcaseContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 2.4rem;
+  border-radius: 5px;
+  overflow: hidden;
+  /* border: 5px solid #fff; */
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.galleryItem {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /* This sets a 1:1 aspect ratio */
+  overflow: hidden;
+  transition: all linear 0.7s;
+  /* border: 5px solid #fff; */
+}
+
+.showcaseImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This ensures the images maintain their aspect ratio */
+  transition: all linear 0.7s;
+}
+.galleryItem:hover {
+  cursor: pointer;
+}
+
+.galleryItem img.hoverImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.galleryItem:hover img {
+  opacity: 0;
+}
+.galleryItem:hover img.hoverImg {
+  opacity: 1;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.93);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  max-width: 70%;
+  width: 35%;
+}
+
+.modalImage {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.modalCaption {
+  font-size: 2.4rem;
+  letter-spacing: 0.5px;
+  color: white;
+  text-align: center;
+  margin-top: 3.2rem;
+}
+
+.modalClose {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  font-size: 36px;
+  color: white;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.modalClose:hover {
+  color: #ccc;
+}
+
+.modalNavPrev,
+.modalNavNext {
+  position: absolute;
+  top: 50%;
+  font-size: 36px;
+  color: white;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transform: translateY(-50%);
+  user-select: none;
+}
+
+.modalNavPrev {
+  left: 4%;
+  left: 25%;
+}
+
+.modalNavNext {
+  right: 4%;
+  right: 25%;
+}
+
+.modalNavPrev:hover,
+.modalNavNext:hover {
+  color: #ccc;
+}
+
+.headingSecondary {
+  font-weight: 700;
+  font-size: 3.2rem;
+  margin-bottom: 4.8rem;
+  line-height: 1.2;
+  color: #333;
+}
+.subheading {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #e20025;
+  text-transform: uppercase;
+  margin-bottom: 1.6rem;
+  letter-spacing: 0.75px;
+}
+
+@media (max-width: 1080px) {
+  .showcase {
+    padding: 3.2rem 9.6rem;
+  }
+}
+@media (max-width: 768px) {
+  .showcaseContainer {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  .showcase {
+    padding: 3.2rem 6.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .showcase {
+    padding: 3.2rem;
+  }
+}

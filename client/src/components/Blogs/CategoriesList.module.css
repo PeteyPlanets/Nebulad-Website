@@ -1,0 +1,86 @@
+.container {
+  width: 100%;
+  padding: 6.4rem 9.6rem;
+  padding-top: 3.2rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10vh;
+  background-image: var(--app-container-bgImg);
+  background-size: cover;
+}
+
+.title {
+  font-size: 3.2rem;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2.4rem;
+  list-style-type: none;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addNew {
+  border: none;
+  color: #eee;
+  background-color: rgb(2, 162, 2);
+  padding: 6px 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.45);
+  transition: all 0.3s;
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.addNew:active {
+  transform: scale(0.9);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+  transform: translateY(2px);
+}
+
+.titleContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 3.2rem;
+}
+
+@media screen and (max-width: 760px) {
+  .addNew {
+    display: none;
+  }
+  .container {
+    padding: 6.4rem;
+    background-image: none;
+  }
+  .list {
+    gap: 3.2rem;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .container {
+    padding: 4.8rem;
+  }
+  .title {
+    font-size: 2.8rem;
+  }
+}
+@media screen and (max-width: 450px) {
+  .container {
+    padding: 4.8rem 3.2rem;
+  }
+}
+@media screen and (max-width: 360px) {
+  .container {
+    padding: 3.2rem 2.4rem;
+  }
+}

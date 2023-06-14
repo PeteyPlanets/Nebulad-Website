@@ -1,0 +1,95 @@
+.loginBtn {
+  display: flex;
+  align-items: center;
+  color: var(--secondary-color);
+  border: none;
+  background-color: transparent;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.loginBtn img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 0.8rem;
+  margin-left: 2.4rem;
+}
+
+.loginBtn:hover {
+  cursor: pointer;
+}
+
+.profileIcon {
+  font-size: 3.2rem;
+  margin-right: 0.8rem;
+  margin-left: 2.4rem;
+  color: inherit;
+  transition: all 0.3s;
+}
+
+.loginText {
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+.loginText i {
+  margin-left: 4px;
+}
+
+/* Dropdown Menu */
+.dropdownMenu {
+  display: none;
+  position: absolute;
+  top: 120%;
+  right: -30%;
+  width: 200px;
+  background-color: rgb(224, 224, 224);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.dropdownMenuItem {
+  padding: 1.6rem;
+  font-size: 1.3rem;
+  text-decoration: none;
+  display: block;
+  color: #172134;
+  border-bottom: 2px solid rgb(173, 188, 203, 0.1);
+  transition: all 0.3s;
+}
+
+.dropdownMenuItem i {
+  margin-right: 8px;
+}
+
+.dropdownArrow {
+  width: 150px;
+  width: 100%;
+  border-top: 20px solid transparent;
+  position: absolute;
+  cursor: pointer;
+  top: -14px;
+  z-index: 2;
+}
+
+.dropdownMenuItem:hover {
+  background-color: #bcbcbc;
+}
+
+.showDropdown {
+  display: block;
+}
+
+.logoutBtn {
+  width: 100%;
+  border: none;
+  background-color: #e0e0e0;
+  cursor: pointer;
+  text-align: left;
+  border-radius: 4px;
+}

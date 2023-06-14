@@ -1,0 +1,193 @@
+.sectionContainer {
+  padding: 6.4rem 0;
+}
+.container {
+  display: flex;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  margin: 0 auto;
+  margin-top: 10vh;
+  width: 60%;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.formContainer {
+  width: 50%;
+  padding: 4.8rem;
+  background-color: #f94327;
+  background-image: linear-gradient(to right bottom, #f94327 0%, #ff7d14 84%);
+}
+
+.contactInfo {
+  flex: 1;
+  color: #333;
+  padding: 4.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contactForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.contactForm h2,
+.contactInfo h2 {
+  font-size: 2.4rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 3.2rem;
+}
+
+.contactForm input,
+.contactForm textarea {
+  width: 100%;
+  font-size: 1.4rem;
+  padding: 12px 6px;
+  background-color: transparent;
+  border: 2px solid #ddd;
+  margin-bottom: 20px;
+  outline: none;
+  color: #fff;
+}
+
+.contactForm input::placeholder,
+.contactForm textarea::placeholder {
+  color: #fff;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  /* Add your styles here */
+  background-color: transparent !important;
+}
+
+.contactForm textarea {
+  resize: none;
+  height: 150px;
+}
+
+.contactForm button {
+  background-color: var(--primary-color);
+  width: 100%;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.contactForm button:hover {
+  background-color: rgb(38, 38, 45);
+}
+
+.contactInfo p {
+  font-size: 1.4rem;
+}
+
+.socialLinks {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  margin-top: 4.8rem;
+  gap: 2.4rem;
+}
+
+.socialLinks a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s;
+  font-size: 1.5rem;
+}
+
+.socialLinks a:hover {
+  color: #555;
+}
+
+.socialLinks span {
+  color: #777;
+}
+.socialLinks i {
+  margin-right: 10px;
+  font-size: 3rem;
+  cursor: pointer;
+  color: #fff;
+  padding: 12px;
+  border-radius: 50%;
+}
+
+.fb {
+  background-color: #4267b2;
+}
+
+.ig {
+  background-image: linear-gradient(
+    45deg,
+    #f09433,
+    #e6683c,
+    #dc2743,
+    #cc2366,
+    #bc1888,
+    #96269c
+  );
+}
+
+.mail {
+  background-color: #007aff;
+}
+
+@media (max-width: 1280px) {
+  .container {
+    width: 75%;
+  }
+}
+@media (max-width: 1080px) {
+  .container {
+    width: 87%;
+  }
+}
+@media (max-width: 860px) {
+  .container {
+    width: 69%;
+  }
+  .formContainer {
+    width: 100%;
+    padding: 4.8rem;
+  }
+  .contactInfo {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: 75%;
+  }
+}
+
+@media (max-width: 512px) {
+  .container {
+    width: 90%;
+  }
+
+  .formContainer {
+    padding: 3.2rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .container {
+    width: 91%;
+  }
+
+  .formContainer {
+    padding: 2.4rem;
+  }
+}

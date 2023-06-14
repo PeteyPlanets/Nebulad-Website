@@ -1,0 +1,52 @@
+.socialLinks {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.socialIcon {
+  font-size: 2.4rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+.fb {
+  background-color: #4267b2;
+  color: #fff;
+}
+
+.twitter {
+  background-color: #1da1f2;
+  color: #fff;
+}
+
+.ig {
+  color: #fff;
+  background-image: linear-gradient(
+    45deg,
+    #f09433,
+    #e6683c,
+    #dc2743,
+    #cc2366,
+    #bc1888,
+    #96269c
+  );
+}
+
+.mail {
+  background-color: #007aff;
+}
+
+.socialLinkContainer {
+  width: 39px;
+  height: 39px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.socialLinkContainer:hover {
+  transform: scale(1.1);
+}

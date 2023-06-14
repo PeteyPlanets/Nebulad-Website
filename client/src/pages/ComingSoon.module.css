@@ -1,0 +1,54 @@
+.container {
+  width: 100%;
+  background-color: #fff;
+  color: #fff;
+  margin-top: 10vh;
+  height: 90vh;
+  background-image: url(../assets/space3.jpeg);
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  isolation: isolate;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: -1;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+.smallHeading {
+  margin-bottom: 2.4rem;
+  color: #eee;
+  letter-spacing: 3px;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+}
+
+.container h1 {
+  font-size: 4.8rem;
+  text-transform: uppercase;
+  letter-spacing: 12px;
+}
+
+.container p {
+  text-align: left;
+  font-size: 1.8rem;
+  line-height: 1.6;
+  margin: 3.2rem 0;
+  font-weight: 300;
+}

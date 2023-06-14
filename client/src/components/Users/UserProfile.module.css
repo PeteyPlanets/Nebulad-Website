@@ -1,0 +1,34 @@
+.userDisplay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3.2rem;
+  margin: 0 auto;
+  margin-bottom: 4.8rem;
+}
+
+.userDisplay img {
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.userDisplay img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15), 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.usernameContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.usernameContainer h4 {
+  font-size: 3.2rem;
+}
+.usernameContainer p {
+  font-size: 1.6rem;
+}

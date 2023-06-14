@@ -1,0 +1,29 @@
+.categoryTitle {
+  font-size: 2rem;
+}
+
+.categoryDescription {
+  margin-bottom: 3.2rem;
+  font-size: 1.5rem;
+  line-height: 1.6;
+}
+
+.myDivider {
+  width: 100%;
+  height: 2px;
+  background-color: #e5e5e5;
+  border-radius: 1px;
+  margin: 1.8rem 0;
+}
+
+@media (max-width: 860px) {
+  .container {
+    width: 50%;
+  }
+}
+@media (max-width: 760px) {
+  .container {
+    width: 90%;
+    margin: 0 auto;
+  }
+}

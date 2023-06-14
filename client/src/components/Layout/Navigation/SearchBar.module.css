@@ -1,0 +1,38 @@
+.search {
+  display: flex;
+  align-items: center;
+}
+
+.searchBtn {
+  background: none;
+  border: none;
+  color: var(--secondary-color);
+  font-size: 1.8rem;
+  margin-right: 2.4rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.searchBtn:hover {
+  transform: scale(1.1);
+}
+
+.searchBox {
+  background: #eee;
+  border: none;
+  width: 0;
+  outline: none;
+
+  transition: width 0.2s ease;
+}
+
+.searchBox.expanded {
+  width: 150px;
+  padding: 0.5rem;
+}
+
+@media screen and (max-width: 1080px) {
+  .search {
+    display: none;
+  }
+}

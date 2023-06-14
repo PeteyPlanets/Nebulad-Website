@@ -1,0 +1,50 @@
+.emailCaptureContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.emailCaptureContainer form {
+  width: 100%;
+}
+
+.emailInput {
+  width: 70%;
+  font-size: 16px;
+  padding: 15px 20px;
+  border: none;
+  outline: none;
+  border-radius: 4px 0 0 4px;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.emailInput:focus {
+  border-color: #0077ff;
+}
+
+.invalid {
+  border-color: #ff4a4a;
+}
+
+.notifyBtn {
+  width: 30%;
+  background-color: #0077ff;
+  color: #fff;
+  font-size: 16px;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.notifyBtn:hover {
+  background-color: #0055cc;
+}
+
+.errorText {
+  color: #ff4a4a;
+  font-size: 14px;
+  margin-top: 8px;
+}

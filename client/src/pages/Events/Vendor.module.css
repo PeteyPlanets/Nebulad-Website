@@ -1,0 +1,116 @@
+.vendorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+}
+
+.circle {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.3);
+  margin-bottom: 2.4rem;
+
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  border: 8px solid transparent;
+  transition: all 0.8s ease;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15), 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.vendorOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.4rem;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  transition: opacity 0.3s ease;
+}
+
+.circle:hover .vendorOverlay {
+  opacity: 1;
+}
+.circle:hover {
+  border-color: var(--tertiary-color);
+}
+
+.vendorContainer h4 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.vendorContainer p {
+  font-size: 1.6rem;
+  color: var(--tertiary-color);
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+}
+
+.icon i {
+  color: #fff;
+  font-size: 2.4rem;
+}
+.ig {
+  background-image: linear-gradient(
+    45deg,
+    #f09433,
+    #e6683c,
+    #dc2743,
+    #cc2366,
+    #bc1888,
+    #96269c
+  );
+}
+
+.fb {
+  background-color: #4267b2;
+  color: #fff;
+}
+.mail {
+  background-color: #007aff;
+}
+
+.globe {
+  background-color: #045de9;
+  background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);
+}
+
+.fadeIn {
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .circle {
+    margin-bottom: 1.2rem;
+  }
+}

@@ -1,0 +1,282 @@
+.heroContainer {
+  width: 100%;
+  margin-top: 10vh;
+  min-height: 60vh;
+  padding: 1.6rem 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6.4rem;
+  position: relative;
+  background-image: url(https://legion-of-superheroes.s3.amazonaws.com/Images/Legion-Background.jpg);
+}
+.heroContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  background-color: rgba(16, 22, 35, 0.9);
+  z-index: 1;
+}
+
+.heroImg {
+  width: 35%;
+  animation: scaleIn 1s ease-in-out forwards;
+  z-index: 10000;
+  position: relative;
+}
+
+.cradleImg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 250px;
+  width: 15%;
+  z-index: 2;
+  animation: slingShot 0.75s ease-out forwards;
+  opacity: 0;
+  animation-delay: 2.75s;
+}
+
+.heroTextContainer {
+  opacity: 0;
+  animation: slideInFromLow 1s ease-out forwards;
+  animation-delay: 0.75s;
+}
+
+.heroTextContainer h1,
+.heroTextContainer h5,
+.heroTextContainer p,
+.heroImg,
+.btnContainer {
+  z-index: 2;
+  position: relative;
+}
+
+.heroTextContainer h1 {
+  font-size: 5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 6px;
+  margin-bottom: 3px;
+  color: #fff;
+}
+
+.heroTextContainer h5 {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  color: #bbb;
+  font-weight: 300;
+}
+
+.heroTextContainer p {
+  font-size: 1.6rem;
+  color: #ddd;
+  letter-spacing: 0.5px;
+}
+
+.heroTextContainer span {
+  color: var(--tertiary-color);
+}
+
+.btnContainer {
+  display: flex;
+  gap: 2.4rem;
+  margin-top: 4.8rem;
+  margin-bottom: 9.6rem;
+}
+
+.btnContainer a {
+  width: 30%;
+  font-size: 1.4rem;
+  letter-spacing: 0.5px;
+  padding: 12px 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.btnContainer a:nth-child(1) {
+  border: 2px solid var(--tertiary-color);
+  color: #fff;
+  background-color: transparent;
+}
+.btnContainer a:nth-child(1):hover {
+  background-color: var(--tertiary-color);
+}
+
+.btnContainer a:nth-child(2) {
+  color: #fff;
+  background-color: var(--primary-color);
+  background: linear-gradient(90deg, #3f51b5, transparent) #075492;
+  border: none;
+}
+.btnContainer a:nth-child(2):hover {
+  background-color: var(--tertiary-color);
+}
+
+.btnContainer a:hover {
+  cursor: pointer;
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  80% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slingShot {
+  0% {
+    transform: translateX(-100vw);
+    opacity: 0.7;
+  }
+  60% {
+    transform: translateX(20%);
+  }
+  80% {
+    transform: translateX(-10%);
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromLow {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+    z-index: 2;
+  }
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 1080px) {
+  .cradleImg {
+    width: 12%;
+  }
+  .heroTextContainer h1 {
+    font-size: 4.2rem;
+  }
+  .btnContainer a {
+    width: 50%;
+  }
+
+  .heroTextContainer h5 {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: #bbb;
+    font-weight: 300;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .heroContainer {
+    gap: 3.2rem;
+  }
+
+  .cradleImg {
+    width: 15%;
+  }
+  .btnContainer {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .btnContainer a {
+    width: 70%;
+  }
+
+  .heroTextContainer h1 {
+    font-size: 3rem;
+  }
+
+  .heroTextContainer h5 {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: #bbb;
+    font-weight: 300;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .heroContainer {
+    flex-direction: column-reverse;
+    gap: 0;
+  }
+  .cradleImg {
+    width: 20%;
+    top: 5px;
+  }
+  .heroTextContainer {
+    max-height: 225px;
+    margin-top: 2rem;
+    margin-bottom: 0;
+  }
+  .heroImg {
+    width: 65%;
+  }
+  .btnContainer {
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .btnContainer a {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 360px) {
+  .heroTextContainer h1 {
+    font-size: 2.2rem;
+  }
+  .heroTextContainer h5 {
+    font-size: 1.4rem;
+  }
+  .heroTextContainer p {
+    font-size: 1.4rem;
+  }
+  .cradleImg {
+    width: 20%;
+    top: 5px;
+  }
+  .heroTextContainer {
+    /* max-height: 150px; */
+    margin-top: 0;
+  }
+  .heroImg {
+    width: 70%;
+  }
+
+  .heroContainer {
+    gap: 3.2rem;
+  }
+
+  .btnContainer {
+    gap: 8px;
+    margin-top: 2.4rem;
+    margin-bottom: 4rem;
+  }
+  .btnContainer a {
+    width: 100%;
+    font-size: 1.4rem;
+  }
+}

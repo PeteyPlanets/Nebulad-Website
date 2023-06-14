@@ -1,0 +1,87 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+  height: 100%;
+  background-color: var(--sideNav-bg);
+}
+
+nav {
+  width: 100%;
+}
+
+.titleContainer {
+  padding-top: 2.4rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.titleContainer img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+}
+
+.title {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: 0.5px;
+  text-align: center;
+  background-image: linear-gradient(90deg, #f54f15, #ff8c42, #ffaa5a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 3.2rem;
+  width: 100%;
+}
+
+.navItem i {
+  margin-right: 1.2rem;
+}
+
+.navItem {
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  padding-left: 10%;
+}
+
+.navItem a {
+  text-decoration: none;
+  color: inherit;
+  border-radius: 4px;
+  gap: 8px;
+}
+
+.activeListItem {
+  border-right: 5px solid #f54f15;
+  background-color: rgb(255, 140, 66, 0.5);
+}
+.activeListItem a {
+  font-weight: bold;
+}
+
+.darkModeLabel {
+  margin-right: 2.4rem;
+}
+
+@media (max-width: 1080px) {
+  .container {
+    width: 35%;
+  }
+}

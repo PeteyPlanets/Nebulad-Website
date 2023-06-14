@@ -1,0 +1,135 @@
+.relatedContent {
+  overflow: hidden;
+}
+
+.relatedContent h3 {
+  font-size: 2rem;
+}
+
+.myDivider {
+  width: 100%;
+  height: 2px;
+  background-color: #e5e5e5;
+  border-radius: 1px;
+  margin: 1.8rem 0;
+}
+
+.relatedContentList {
+  list-style: none;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.relatedContentList li {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.relatedContentList li:hover {
+  cursor: pointer;
+  background-color: rgb(230, 230, 250);
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.linkEl {
+  position: relative;
+  width: 100%;
+  text-decoration: none;
+  align-items: center;
+  display: flex;
+  gap: 3.2rem;
+  transition: all 0.3s;
+}
+
+.linkEl:active,
+.linkEl:visited {
+  color: blue;
+}
+
+.linkEl img {
+  width: 23%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+.categoryTitle {
+  color: var(--tertiary-color);
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  margin-bottom: 1.6rem;
+}
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #111;
+  margin-bottom: 0.3rem;
+}
+.date {
+  color: rgb(125, 125, 125);
+  font-size: 1.6rem;
+}
+
+@media (max-width: 650px) {
+  .relatedContentList {
+    gap: 0;
+  }
+  .linkEl {
+    gap: 2.4rem;
+  }
+  .linkEl img {
+    width: 29%;
+  }
+
+  .categoryTitle {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+  .title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #111;
+    margin-bottom: 0.4rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .date {
+    font-size: 1.3rem;
+  }
+}
+@media (max-width: 450px) {
+  .relatedContentList {
+    gap: 0rem;
+  }
+  .linkEl {
+    gap: 2rem;
+  }
+  .linkEl img {
+    width: 31%;
+  }
+
+  .categoryTitle {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+  .title {
+    font-size: 1.7rem;
+  }
+  .date {
+    font-size: 1.3rem;
+  }
+}

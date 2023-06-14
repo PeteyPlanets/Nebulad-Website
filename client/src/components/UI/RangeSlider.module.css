@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3.2rem;
+  border-radius: 8px;
+  margin: 0 auto;
+  z-index: 10;
+}
+
+.container input[type="range"] {
+  width: 250px;
+}

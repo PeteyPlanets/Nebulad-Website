@@ -1,0 +1,142 @@
+/* Default (light) theme colors */
+:root {
+  --primary-color: #172134;
+  --secondary-color: #fff;
+  --tertiary-color: #f54f15;
+  --nav-gradient: linear-gradient(
+    115deg,
+    rgba(20, 28, 44, 0.99),
+    rgba(29, 49, 87, 0.99),
+    rgba(245, 79, 21, 0.99)
+  );
+  --app-container-bgImg: url(./assets/MidJourney/Final/Space-Landscape.jpeg);
+  --category-card-gradient: linear-gradient(
+    to right,
+    rgb(20, 28, 44, 0.8) 60%,
+    rgb(29, 49, 87, 0.8)
+  );
+  --blog-card-gradient: linear-gradient(to right, #141c2c 60%, #1d3157);
+  --sideNav-bg: rgb(1, 22, 60, 0.9);
+  --userDashboard-bg: rgb(245, 79, 21, 0.75);
+  --favorite-icon: #fff;
+}
+
+/* Dark theme colors */
+.dark-theme {
+  --primary-color: #172134;
+  --secondary-color: #fff;
+  --tertiary-color: #f54f15;
+  --nav-gradient: linear-gradient(
+    115deg,
+    rgba(20, 28, 44, 0.95),
+    rgba(29, 49, 87, 0.95),
+    rgba(245, 79, 21, 0.95)
+  );
+  --app-container-bgImg: url(./assets/MidJourney/Final/Space-Landscape.jpeg);
+  --category-card-gradient: linear-gradient(
+    to right,
+    rgb(20, 28, 44, 0.8) 60%,
+    rgb(29, 49, 87, 0.8)
+  );
+  --blog-card-gradient: linear-gradient(to right, #141c2c 60%, #1d3157);
+  --sideNav-bg: rgb(1, 22, 60, 0.9);
+  --userDashboard-bg: rgb(245, 79, 21, 0.75);
+  --favorite-icon: #fff;
+}
+
+/* Light Theme */
+.light-theme {
+  --primary-color: #fff;
+  --secondary-color: #172134;
+  --tertiary-color: #f54f15;
+  --nav-gradient: none;
+  --app-container-bgImg: none;
+  --category-card-gradient: none;
+  --blog-card-gradient: none;
+  --sideNav-bg: #ddd;
+  --userDashboard-bg: rgba(0, 0, 0, 0.3);
+  --favorite-icon: #000;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  color: var(--secondary-color);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--primary-color);
+  /* background-image: var(--app-container-bgImg); */
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.main-container {
+  flex-grow: 1;
+}
+
+.alert {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  z-index: 9999;
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-align: center;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 1.6rem 15rem;
+  -webkit-box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
+}
+.alert--success {
+  background-color: #20bf6b;
+}
+.alert--error {
+  background-color: #eb4d4b;
+}
+
+/* Change the background color of the editor */
+.ql-container.ql-snow {
+  background-color: #fff;
+}
+
+.quill {
+  width: 100%;
+}
+
+/* Toolbar */
+.ql-toolbar.ql-snow {
+  background-color: #e0e0e0;
+  background-color: #a40606;
+  background-image: linear-gradient(315deg, #a40606 0%, #d98324 74%);
+}
+
+.ql-toolbar.ql-snow span {
+  color: white;
+}
+
+/* Toolbar buttons */
+.ql-snow .ql-stroke {
+  stroke: #000000;
+}
