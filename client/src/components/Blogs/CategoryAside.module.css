@@ -16,6 +16,11 @@
   margin: 1.8rem 0;
 }
 
+@media (max-width: 1080px) {
+  .container {
+    width: 500%;
+  }
+}
 @media (max-width: 860px) {
   .container {
     width: 50%;
