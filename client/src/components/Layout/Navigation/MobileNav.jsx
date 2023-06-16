@@ -50,7 +50,7 @@ const MobileNav = () => {
               </Link>
             </li>
             <li>
-              <Link to="/dashboard/profile" onClick={() => setIsOpen(false)}>
+              <Link to="/about-me" onClick={() => setIsOpen(false)}>
                 <i className="fas fa-user"></i> About
               </Link>
             </li>
