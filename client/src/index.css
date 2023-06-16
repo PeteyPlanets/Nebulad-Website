@@ -9,7 +9,7 @@
     rgba(29, 49, 87, 0.99),
     rgba(245, 79, 21, 0.99)
   );
-  --app-container-bgImg: url(./assets/MidJourney/Final/Space-Landscape.jpeg);
+  --app-container-bgImg: url(https://nicky-blogs.s3.amazonaws.com/Assets/Backgrounds/Space-Landscape.jpeg);
   --category-card-gradient: linear-gradient(
     to right,
     rgb(20, 28, 44, 0.8) 60%,
@@ -32,7 +32,7 @@
     rgba(29, 49, 87, 0.95),
     rgba(245, 79, 21, 0.95)
   );
-  --app-container-bgImg: url(./assets/MidJourney/Final/Space-Landscape.jpeg);
+  --app-container-bgImg: url(https://nicky-blogs.s3.amazonaws.com/Assets/Backgrounds/Space-Landscape.jpeg);
   --category-card-gradient: linear-gradient(
     to right,
     rgb(20, 28, 44, 0.8) 60%,
