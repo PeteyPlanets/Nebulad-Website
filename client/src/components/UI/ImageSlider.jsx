@@ -18,7 +18,6 @@ const ImageSlider = ({ imageArray, uniquePhrase }) => {
   };
   const onInViewChange = (inView) => {
     if (inView) {
-      console.log("wtf");
       setTimeout(() => {
         setIsVisible(true);
       }, 0);
