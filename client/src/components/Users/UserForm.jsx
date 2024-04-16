@@ -5,6 +5,7 @@ import axios from "axios";
 import { useUser } from "../../context/UserContext";
 import { showAlert } from "../../util/alerts";
 import styles from "./UserForm.module.css";
+import { API_BASE_URL } from "../../apiConfig";
 
 const UserForm = () => {
   const [name, setName] = useState("");
@@ -33,16 +34,12 @@ const UserForm = () => {
     data.set("photo", profilePicture[0]);
 
     try {
-      const res = await axios.patch(
-        `${import.meta.env.VITE_APP_API_URL}/users/updateMe`,
-        data,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-          withCredentials: true,
-        }
-      );
+      const res = await axios.patch(`${API_BASE_URL}/users/updateMe`, data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        withCredentials: true,
+      });
 
       showAlert("success", "Updated successfully!", 2.5);
       setTimeout(() => {

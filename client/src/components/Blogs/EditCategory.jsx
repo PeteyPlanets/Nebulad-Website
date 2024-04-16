@@ -9,6 +9,7 @@ import NotFound from "../../pages/ErrorPage";
 
 // Util
 import { showAlert } from "../../util/alerts";
+import { API_BASE_URL } from "../../apiConfig";
 
 // Styles
 import styles from "./CreateBlog.module.css";
@@ -40,9 +41,7 @@ const EditCategory = () => {
     const fetchCategory = async () => {
       if (loading) return;
       try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_APP_API_URL}/categories/${id}`
-        );
+        const response = await axios.get(`${API_BASE_URL}/categories/${id}`);
         setCategory(response.data.category);
       } catch (error) {
         console.error(error);
@@ -70,11 +69,9 @@ const EditCategory = () => {
       data.set("description", description);
       data.set("file", files[0]);
 
-      await axios.patch(
-        `${import.meta.env.VITE_APP_API_URL}/categories/${category._id}`,
-        data,
-        { withCredentials: true }
-      );
+      await axios.patch(`${API_BASE_URL}/categories/${category._id}`, data, {
+        withCredentials: true,
+      });
 
       navigate(`/blogs/categories/${category._id}`);
       showAlert("success", "Category updated successfully!");

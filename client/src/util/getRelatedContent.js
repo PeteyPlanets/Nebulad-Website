@@ -1,4 +1,5 @@
 import axios from "axios";
+import { API_BASE_URL } from "../apiConfig";
 
 const getRelatedContent = async (currentBlog) => {
   let firstBlog;
@@ -10,7 +11,7 @@ const getRelatedContent = async (currentBlog) => {
 
   try {
     // 2) Get All Blogs
-    const res = await axios.get(`${import.meta.env.VITE_APP_API_URL}/blogs`);
+    const res = await axios.get(`${API_BASE_URL}/blogs`);
     const allBlogs = res.data.blogs;
 
     // For Non-Music Blogs

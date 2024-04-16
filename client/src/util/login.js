@@ -1,11 +1,12 @@
 import axios from "axios";
 import { showAlert } from "./alerts";
+import { API_BASE_URL } from "../apiConfig";
 
 export const login = async (email, password) => {
   try {
     const res = await axios({
       method: "POST",
-      url: `${import.meta.env.VITE_APP_API_URL}/users/login`,
+      url: `${API_BASE_URL}/users/login`,
       data: {
         email,
         password,
@@ -24,7 +25,7 @@ export const login = async (email, password) => {
 export const logout = async () => {
   try {
     const res = await axios.post(
-      `${import.meta.env.VITE_APP_API_URL}/users/logout`,
+      `${API_BASE_URL}/users/logout`,
       {},
       {
         withCredentials: true,
@@ -42,7 +43,7 @@ export const signup = async (data) => {
   try {
     const res = await axios({
       method: "POST",
-      url: `${import.meta.env.VITE_APP_API_URL}/users/signup`,
+      url: `${API_BASE_URL}/users/signup`,
       data,
     });
 
@@ -62,12 +63,9 @@ export const signup = async (data) => {
 
 export async function checkLoggedInStatus(setUser) {
   try {
-    const response = await axios.get(
-      `${import.meta.env.VITE_APP_API_URL}/users/isLoggedIn`,
-      {
-        withCredentials: true,
-      }
-    );
+    const response = await axios.get(`${API_BASE_URL}/users/isLoggedIn`, {
+      withCredentials: true,
+    });
 
     if (response.data.status === "success" && response.data.isLoggedIn) {
       setUser(response.data.user);

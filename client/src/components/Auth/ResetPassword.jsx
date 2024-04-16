@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../../apiConfig";
 
 import axios from "axios";
 import { showAlert } from "../../util/alerts";
@@ -19,9 +20,7 @@ const ResetPassword = () => {
     try {
       const res = await axios({
         method: "PATCH",
-        url: `${
-          import.meta.env.VITE_APP_API_URL
-        }/users/forgot-password/${resetToken}`,
+        url: `${API_BASE_URL}/users/forgot-password/${resetToken}`,
         data: {
           password,
           confirmPassword,

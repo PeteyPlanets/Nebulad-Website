@@ -30,8 +30,12 @@ app.use(cookieParser());
 // enable CORS for all routes
 app.use(cors({ credentials: true, origin: process.env.FRONTEND_URL }));
 
-// Allow server to serve static files
+// Allow server to serve static filesyy
 app.use(express.static(path.join(__dirname, "public")));
+app.use((req, res, next) => {
+  console.log(`Incoming request: ${req.method} ${req.path}`);
+  next();
+});
 
 app.use("/api/blogs", blogsRouter);
 app.use("/api/categories", categoriesRouter);

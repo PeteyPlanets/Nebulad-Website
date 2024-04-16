@@ -10,6 +10,7 @@ import Loader from "../UI/Loader";
 // Util
 import { formatDate } from "../../util/dates";
 import { showAlert } from "../../util/alerts";
+import { API_BASE_URL } from "../../apiConfig";
 
 // Styles
 import styles from "./CreateBlog.module.css";
@@ -38,9 +39,7 @@ function CreateBlog() {
   useEffect(() => {
     async function fetchCategories() {
       try {
-        const res = await axios.get(
-          `${import.meta.env.VITE_APP_API_URL}/categories`
-        );
+        const res = await axios.get(`${API_BASE_URL}/categories`);
         setCategories(res.data.categories);
       } catch (error) {
         console.log("Error fetching categories: ", error);
@@ -83,16 +82,12 @@ function CreateBlog() {
     data.append("blogListPhoto", blogListImageFiles);
 
     try {
-      const res = await axios.post(
-        `${import.meta.env.VITE_APP_API_URL}/blogs`,
-        data,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-          withCredentials: true,
-        }
-      );
+      const res = await axios.post(`${API_BASE_URL}/blogs`, data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        withCredentials: true,
+      });
 
       navigate(`/blogs/${res.data.blog._id}`);
     } catch (error) {

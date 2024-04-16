@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { showAlert } from "../../util/alerts";
+import { API_BASE_URL } from "../../apiConfig";
 
 const EmailCapture = ({ cta = "Notify Me", styles }) => {
   const [email, setEmail] = useState("");
@@ -18,12 +19,9 @@ const EmailCapture = ({ cta = "Notify Me", styles }) => {
 
     if (isValid) {
       try {
-        const res = await axios.post(
-          `${import.meta.env.VITE_APP_API_URL}/emails`,
-          {
-            email,
-          }
-        );
+        const res = await axios.post(`${API_BASE_URL}/emails`, {
+          email,
+        });
 
         if (res.data.status === "success") {
           showAlert("success", "Please check your email", 2);

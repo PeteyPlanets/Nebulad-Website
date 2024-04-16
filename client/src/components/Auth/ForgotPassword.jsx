@@ -5,6 +5,7 @@ import axios from "axios";
 import { showAlert } from "../../util/alerts";
 
 import styles from "./ForgotPassword.module.css";
+import { API_BASE_URL } from "../../apiConfig";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -20,7 +21,7 @@ const ForgotPassword = () => {
     try {
       const res = await axios({
         method: "POST",
-        url: `${import.meta.env.VITE_APP_API_URL}/users/forgot-password`,
+        url: `${API_BASE_URL}/users/forgot-password`,
         data: {
           email,
         },

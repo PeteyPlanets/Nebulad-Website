@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../apiConfig";
 
 const useCategories = () => {
   const [categories, setCategories] = useState([]);
@@ -8,9 +9,7 @@ const useCategories = () => {
   useEffect(() => {
     async function fetchCategories() {
       try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_APP_API_URL}/categories`
-        );
+        const response = await axios.get(`${API_BASE_URL}/categories`);
         setCategories(response.data.categories);
         setIsLoading(false);
       } catch (error) {

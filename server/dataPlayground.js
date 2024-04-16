@@ -9388,6 +9388,8 @@ const lllblogs = [
   // },
 ];
 
+import { API_BASE_URL } from "../apiConfig";
+
 let example = {
   title: [`Kids In America`, "No More Words"],
   artist: [`Kim Wilde`, "Berlin"],
@@ -9544,7 +9546,7 @@ function extractLinks(inputString) {
 
 export async function populateDB(newBlogs) {
   newBlogs.forEach((blog) => {
-    axios.post(`${import.meta.env.VITE_APP_API_URL}/blogs`, blog, {
+    axios.post(`${API_BASE_URL}/blogs`, blog, {
       withCredentials: true,
     });
   });

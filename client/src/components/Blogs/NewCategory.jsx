@@ -9,6 +9,7 @@ import NotFound from "../../pages/ErrorPage";
 
 // Util
 import { showAlert } from "../../util/alerts";
+import { API_BASE_URL } from "../../apiConfig";
 
 // Styles
 import styles from "./CreateBlog.module.css";
@@ -39,7 +40,7 @@ const NewCategory = () => {
 
     try {
       const res = await axios.post(
-        `${import.meta.env.VITE_APP_API_URL}/categories`,
+        `${API_BASE_URL}/categories`,
         newCategoryData,
         {
           withCredentials: true,
@@ -50,11 +51,9 @@ const NewCategory = () => {
       const data = new FormData();
       data.set("file", files[0]);
 
-      await axios.patch(
-        `${import.meta.env.VITE_APP_API_URL}/categories/${categoryId}`,
-        data,
-        { withCredentials: true }
-      );
+      await axios.patch(`${API_BASE_URL}/categories/${categoryId}`, data, {
+        withCredentials: true,
+      });
 
       navigate(`/blogs/categories/${res.data.category._id}`);
     } catch (error) {

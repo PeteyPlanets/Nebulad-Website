@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { showAlert } from "../util/alerts";
 import styles from "./Contact.module.css";
+import { API_BASE_URL } from "../apiConfig";
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -21,7 +22,7 @@ const Contact = () => {
 
     try {
       const res = await axios.post(
-        `${import.meta.env.VITE_APP_API_URL}/emails/send-contact-email`,
+        `${API_BASE_URL}/emails/send-contact-email`,
         formData
       );
 

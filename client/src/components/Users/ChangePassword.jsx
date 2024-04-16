@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { showAlert } from "../../util/alerts";
+import { API_BASE_URL } from "../../apiConfig";
 
 import styles from "./ChangePassword.module.css";
 
@@ -27,11 +28,9 @@ const ChangePassword = () => {
     console.log(formData);
 
     try {
-      await axios.patch(
-        `${import.meta.env.VITE_APP_API_URL}/users/updateMyPassword`,
-        formData,
-        { withCredentials: true }
-      );
+      await axios.patch(`${API_BASE_URL}/users/updateMyPassword`, formData, {
+        withCredentials: true,
+      });
       showAlert("success", "Password updated successfully");
     } catch (error) {
       console.log(error);

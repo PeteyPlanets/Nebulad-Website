@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { useUser } from "../../../context/UserContext";
 import { showAlert } from "../../../util/alerts";
+import { API_BASE_URL } from "../../../apiConfig";
 
 import styles from "./NavLogin.module.css";
 
@@ -19,7 +20,7 @@ function NavLogin() {
   const logout = async (setUser) => {
     try {
       await axios.post(
-        `${import.meta.env.VITE_APP_API_URL}/users/logout`,
+        `${API_BASE_URL}/users/logout`,
         {},
         {
           withCredentials: true,
