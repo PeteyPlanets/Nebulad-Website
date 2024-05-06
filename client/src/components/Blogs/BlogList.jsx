@@ -26,25 +26,34 @@ function BlogList({ category, blogs, query }) {
   const [activePage, setActivePage] = useState(1);
 
   useEffect(() => {
-    setCurrentPage(1);
-    setActivePage(1);
+    const savedPage = localStorage.getItem("currentPage");
+    const page = savedPage ? Number(savedPage) : 1;
+    setCurrentPage(page);
+    setActivePage(page);
   }, [category, query]);
+
+  useEffect(() => {
+    document.documentElement.scrollTop = 0; // Scrolling to the top of the window on page change
+  }, [currentPage]);
 
   // Functions to change page
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
     setActivePage(pageNumber);
+    localStorage.setItem("currentPage", pageNumber);
   };
   const nextPage = () => {
     if (currentPage < Math.ceil(blogs.length / blogsPerPage)) {
       setCurrentPage(currentPage + 1);
       setActivePage(currentPage + 1);
+      localStorage.setItem("currentPage", newPage);
     }
   };
   const prevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
       setActivePage(currentPage - 1);
+      ocalStorage.setItem("currentPage", newPage);
     }
   };
 

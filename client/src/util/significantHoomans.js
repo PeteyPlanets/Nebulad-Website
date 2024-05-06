@@ -260,7 +260,7 @@ const significantHoomans = [
 
 export function getHoomans(blog) {
   // If not music blog return
-  if (!blog.isMusic) return;
+  if (!blog.isMusicBlog) return;
 
   const metadata = JSON.parse(blog.metadata);
   if (!metadata.significantHoomans.length > 0) return;

@@ -23,7 +23,7 @@ const HeroSection = () => {
         <h1>
           Cradle Con <span>2024</span>
         </h1>
-        <p>Long Island, Ny - May 20th &amp; 21st</p>
+        <p>Long Island, Ny - May 18th &amp; 19th</p>
 
         <div className={styles.btnContainer}>
           <a

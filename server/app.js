@@ -32,10 +32,12 @@ app.use(cors({ credentials: true, origin: process.env.FRONTEND_URL }));
 
 // Allow server to serve static filesyy
 app.use(express.static(path.join(__dirname, "public")));
-app.use((req, res, next) => {
-  console.log(`Incoming request: ${req.method} ${req.path}`);
-  next();
-});
+
+// Log all requests to console
+// app.use((req, res, next) => {
+//   console.log(`Incoming request: ${req.method} ${req.path}`);
+//   next();
+// });
 
 app.use("/api/blogs", blogsRouter);
 app.use("/api/categories", categoriesRouter);

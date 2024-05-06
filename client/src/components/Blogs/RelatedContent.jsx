@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import styles from "./RelatedContent.module.css";
 
 const RelatedContent = ({ related }) => {
+  console.log("RELATED = ", related);
   return (
     <div className={styles.relatedContent}>
       <h3>Related Content</h3>

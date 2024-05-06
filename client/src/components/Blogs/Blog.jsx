@@ -99,6 +99,7 @@ const Blog = () => {
   const getVideoUrl = () => {
     const metadata = JSON.parse(blog.metadata);
     const songs = metadata.songs;
+    console.log("SONGS = ", songs);
 
     const componentArray = songs.map((song) => {
       if (!song.video) return null;
@@ -110,7 +111,9 @@ const Blog = () => {
 
   const displayHoomans = (blog) => {
     const hoomans = getHoomans(blog);
+
     if (!hoomans) return;
+
     return hoomans.map((hooman) => {
       return (
         <div key={hooman.name} className={styles.hoomanContainer}>

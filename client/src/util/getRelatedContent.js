@@ -47,7 +47,6 @@ const getRelatedContent = async (currentBlog) => {
     ).significantHoomans;
     if (significantHoomans.length > 0) {
       // Check if any other blog has matching hoomans
-      console.log("There are hoomans?", significantHoomans);
       const matchingHoomanBlog = getRandomBlogWithMatchingHoomans(
         significantHoomans,
         allBlogs,
@@ -81,6 +80,7 @@ const getRelatedContent = async (currentBlog) => {
       if (!randomArtistBlog) {
         if (index < sortedBlogs.length - 1) secondBlog = sortedBlogs[index + 2];
         if (index === sortedBlogs.length - 1) secondBlog = sortedBlogs[1];
+        if (!secondBlog) secondBlog = sortedBlogs[1];
       }
     }
 
@@ -106,9 +106,11 @@ const getRelatedContent = async (currentBlog) => {
       if (!setArtist && !setHooman) {
         if (index < sortedBlogs.length - 1) thirdBlog = sortedBlogs[index + 3];
         if (index === sortedBlogs.length - 1) thirdBlog = sortedBlogs[2];
+        if (!thirdBlog) thirdBlog = sortedBlogs[0];
       } else {
         if (index < sortedBlogs.length - 1) thirdBlog = sortedBlogs[index + 2];
         if (index === sortedBlogs.length - 1) thirdBlog = sortedBlogs[1];
+        if (!thirdBlog) thirdBlog = sortedBlogs[0];
       }
     }
 
