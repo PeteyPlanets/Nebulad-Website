@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../apiConfig";
 
 const useBlogsFromCategory = (title, categoryId) => {
   const [blogs, setBlogs] = useState([]);
@@ -10,9 +11,7 @@ const useBlogsFromCategory = (title, categoryId) => {
 
     const fetchBlogs = async () => {
       try {
-        const blogsResponse = await axios.get(
-          `${import.meta.env.VITE_APP_API_URL}/blogs`
-        );
+        const blogsResponse = await axios.get(`${API_BASE_URL}/blogs`);
         const blogs = blogsResponse.data.blogs.filter(
           (blog) => blog.category._id === categoryId
         );

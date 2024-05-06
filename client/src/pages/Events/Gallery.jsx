@@ -68,7 +68,7 @@ const Gallery = () => {
   return (
     <section className={styles.showcase}>
       <span className={styles.subheading}>Previous Commissions</span>
-      <h2 className={styles.headingSecondary}>Super Frames Gallery</h2>
+      <h2 className={styles.headingSecondary}>Super Frames</h2>
       <div className={styles.showcaseContainer}>
         {images.map((image, index) => (
           <div

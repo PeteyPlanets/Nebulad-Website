@@ -8,147 +8,62 @@ config({ path: "./config.env" });
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-const testHtml = `
+import { sendPromotionalEmail } from "./utils/email.js";
 
-<!DOCTYPE html>
+const testHtml = `<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Raffle Winner</title>
-  </head>
-  <body>
-    <div
-      style="
-        padding: 24px;
-        background-color: #555;
-        color: #fff;
-        font-size: 18px;
-      "
-    >
-      <div
-        style="
-          display: flex;
-          gap: 1.2rem;
-          align-items: center;
-          justify-content: center;
-          margin-bottom: 2.4rem;
-        "
-      >
-        <img
-          src="https://nicky-blogs.s3.amazonaws.com/Assets/logo.png"
-          alt="Logo image"
-          style="width: 70px; height: 70px"
-        />
-        <img
-          src="https://nicky-blogs.s3.amazonaws.com/Assets/email-logo.png"
-          alt="Logo image"
-          style="width: 250px"
-        />
-      </div>
-      <div>
-        <p style="margin-bottom: 12px; color: #fff">Dear Kelly Walz,</p>
-        <br />
-        <p style="color: #fff">
-          Congratulations on being selected as the lucky winner of the raffle
-          conducted by Nebulad Graphics at this past weekend's Cradle Con! We
-          are thrilled to inform you that you have won a prize of your choice
-          from our selection of unique handmade items.
-        </p>
-        <p style="color: #fff">
-          You now can choose one of the following three prizes:
-        </p>
-        <ol style="color: #fff">
-          <li>
-            Set of four coasters: These beautifully crafted coasters are both
-            functional and aesthetically pleasing, ensuring your tabletops
-            remain protected while adding a touch of super style to your home.
-          </li>
-          <li>
-            Wall mount key ring holder: Keep your keys organized and easily
-            accessible with our practical and visually appealing wall mount key
-            ring holder. It's the perfect addition to any entryway or living
-            space.
-          </li>
-          <li>
-            Bottle opener: Our high-quality bottle opener is designed for both
-            functionality and durability. It will become your trusty companion
-            for effortlessly opening your favorite beverages.
-          </li>
-        </ol>
-        <p style="color: #fff">
-          To make your prize even more special, we offer the option of choosing
-          a superhero character theme featuring the character of your
-          choice.&nbsp;
-        </p>
-        <p style="color: #fff">
-          Please note that as these items are handmade, there is no set time
-          frame for delivery. However, we assure you that we will prioritize
-          processing your order as soon as possible. Kindly understand that no
-          refunds or exchanges will be allowed due to the custom nature of these
-          items.
-        </p>
-        <p style="color: #fff">
-          To claim your prize, please respond to this email or email
-          <a href="mailto:nebulad.@gmail.com" style="color: #ffffff">
-            Nebulad.@gmail.com
-          </a>
-          (subject: Raffle Winner) within 72 hours and indicate your preferred
-          prize and superhero character theme. We will provide you with further
-          instructions on how to proceed. Note, you will not be charged for
-          shipping within the state of New York.&nbsp;
-        </p>
-        <p style="color: #fff">
-          Once again, congratulations on winning the raffle! We sincerely
-          appreciate your participation and support.
-        </p>
-        <p style="color: #fff"><br /></p>
-        <p style="color: #fff">Best regards,</p>
-        <p style="color: #fff">Nick Marino - Nebulad Graphics</p>
-        <img
-          src="https://nicky-blogs.s3.amazonaws.com/Assets/Logo_with_photo.png"
-          alt="Logo image"
-          style="width: 250px; margin-top: 3.2rem"
-        />
-        <div
-          style="
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 2.8rem auto;
-          "
-        >
-          <a href="https://www.instagram.com/nebuladgraphics" target="_blank">
-            <img
-              src="https://img.icons8.com/ios-glyphs/30/ffffff/instagram-new.png"
-              alt="Instagram"
-              style="margin-right: 18px"
-            />
-          </a>
-          <a href="https://www.instagram.com/nebuladgraphics" target="_blank">
-            <img
-              src="https://img.icons8.com/ios-glyphs/30/ffffff/facebook-new.png"
-              alt="Facebook"
-              style="margin-right: 18px"
-            />
-          </a>
-          <a href="https://nebulad.com/collections/super-frames" target="_blank">
-            <img
-              src="https://img.icons8.com/ios-glyphs/30/ffffff/globe.png"
-              alt="Website"
-            />
-          </a>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Email</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .email-container {
+            background-color: #ffffff;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #dddddd;
+        }
+        .email-header {
+            text-align: center;
+            background: #0078D7;
+            color: #ffffff;
+            padding: 10px 0;
+        }
+        .email-body {
+            padding: 20px;
+            text-align: center;
+        }
+        .email-footer {
+            text-align: center;
+            font-size: 12px;
+            color: #777777;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="email-header">
+            Test Email
         </div>
-      </div>
-      <p style="text-align: center; font-size: 14px; color: #aaaaaa">
-        Nebulad Graphics, 544 Hempstead Blvd, Uniondale, NY 11553
-      </p>
+        <div class="email-body">
+            <h1>Hello!</h1>
+            <p>Thank you for participating in our test. This is a simple HTML email template for testing purposes.</p>
+            <p>Feel free to respond to this email if you received it.</p>
+        </div>
+        <div class="email-footer">
+            <p>Company Name, 123 Fake Street, City, State</p>
+            <p>To unsubscribe from future emails, click <a href="#">here</a>.</p>
+        </div>
     </div>
-  </body>
+</body>
 </html>
-
-
 `;
 
 const losersHtml = `
@@ -264,6 +179,8 @@ const losersHtml = `
           </a>
         </div>
       </div>
+      <p>Please click the following link to <a href="https://nebulad.com/">Unsubscribe</a> from future emails.</p>
+
       <p style="text-align: center; font-size: 14px; color: #aaaaaa">
         Nebulad Graphics, 544 Hempstead Blvd, Uniondale, NY 11554
       </p>
@@ -300,7 +217,6 @@ const testRaffleWinnerEmail = async (to, subject, html) => {
 async function getEmailsFromDatabase() {
   try {
     const response = await axios.get("http://localhost:8000/api/emails");
-    // console.log("res = ", response);
     const emails = response.data.data.emails;
     return emails;
   } catch (error) {
@@ -309,25 +225,22 @@ async function getEmailsFromDatabase() {
 }
 const emails = await getEmailsFromDatabase();
 let emailsArr = emails.map((obj) => obj.email);
-console.log(emailsArr);
+// console.log(emailsArr);
 
-emailsArr.forEach((email) => {
-  testRaffleWinnerEmail(
-    email,
-    "Thank You for Participating in the Raffle!",
-    losersHtml
-  );
-});
+// emailsArr.forEach((email) => {
+//   testRaffleWinnerEmail(
+//     email,
+//     "Thank You for Participating in the Raffle!",
+//     losersHtml
+//   );
+// });
 
-// testRaffleWinnerEmail(
-//   "peter.faucella@gmail.com",
-//   "Thank You for Participating in the Raffle!",
-//   losersHtml
-// );
-// testRaffleWinnerEmail(
-//   "nebulad@gmail.com",
-//   "Thank You for Participating in the Raffle!",
-//   losersHtml
-// );
+testRaffleWinnerEmail(
+  "peter.faucella@gmail.com",
+  "Thank You for Participating in the Raffle!",
+  testHtml
+);
+
+// sendPromotionalEmail(emails[0]);
 
 export default sgMail;

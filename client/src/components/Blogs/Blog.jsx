@@ -18,6 +18,7 @@ import getReleatedContent from "../../util/getRelatedContent";
 import sanitizeContent from "../../util/sanitize";
 import { getHoomans } from "../../util/significantHoomans";
 import { showAlert } from "../../util/alerts";
+import { API_BASE_URL } from "../../apiConfig";
 
 // Styles
 import styles from "./Blog.module.css";
@@ -37,9 +38,7 @@ const Blog = () => {
     const fetchBlog = async () => {
       if (loading) return;
       try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_APP_API_URL}/blogs/${id}`
-        );
+        const response = await axios.get(`${API_BASE_URL}/blogs/${id}`);
 
         // Check if blog exists
         if (response.data.blog) {
@@ -100,6 +99,7 @@ const Blog = () => {
   const getVideoUrl = () => {
     const metadata = JSON.parse(blog.metadata);
     const songs = metadata.songs;
+    console.log("SONGS = ", songs);
 
     const componentArray = songs.map((song) => {
       if (!song.video) return null;
@@ -111,7 +111,9 @@ const Blog = () => {
 
   const displayHoomans = (blog) => {
     const hoomans = getHoomans(blog);
+
     if (!hoomans) return;
+
     return hoomans.map((hooman) => {
       return (
         <div key={hooman.name} className={styles.hoomanContainer}>

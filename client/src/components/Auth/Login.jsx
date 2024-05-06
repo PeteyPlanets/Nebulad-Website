@@ -5,6 +5,7 @@ import { useUser } from "../../context/UserContext";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { showAlert } from "../../util/alerts";
+import { API_BASE_URL } from "../../apiConfig";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -20,7 +21,7 @@ const Login = () => {
     try {
       const res = await axios({
         method: "POST",
-        url: `${import.meta.env.VITE_APP_API_URL}/users/login`,
+        url: `${API_BASE_URL}/users/login`,
         data: {
           email,
           password,

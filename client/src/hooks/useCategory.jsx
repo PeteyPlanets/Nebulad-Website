@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../apiConfig";
 
 const useCategory = (id) => {
   const [category, setCategory] = useState([]);
@@ -8,9 +9,7 @@ const useCategory = (id) => {
   useEffect(() => {
     async function fetchCategory() {
       try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_APP_API_URL}/categories/${id}`
-        );
+        const response = await axios.get(`${API_BASE_URL}/categories/${id}`);
         setCategory(response.data.category);
         setCategoryLoading(false);
       } catch (error) {

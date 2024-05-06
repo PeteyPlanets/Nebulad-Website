@@ -12,6 +12,7 @@ import RangeSlider from "../UI/RangeSlider";
 import { formatDate } from "../../util/dates";
 import { showAlert } from "../../util/alerts";
 import { formatHoomans } from "../../util/significantHoomans";
+import { API_BASE_URL } from "../../apiConfig";
 
 // Hooks/Context
 import { useUser } from "../../context/UserContext";
@@ -52,9 +53,7 @@ function EditBlog() {
     const fetchBlog = async () => {
       if (loading) return;
       try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_APP_API_URL}/blogs/${id}`
-        );
+        const response = await axios.get(`${API_BASE_URL}/blogs/${id}`);
 
         const fetchedBlog = response.data.blog;
         console.log(fetchedBlog.image);
@@ -120,11 +119,9 @@ function EditBlog() {
     }
 
     try {
-      const res = await axios.patch(
-        `${import.meta.env.VITE_APP_API_URL}/blogs/${id}`,
-        data,
-        { withCredentials: true }
-      );
+      const res = await axios.patch(`${API_BASE_URL}/blogs/${id}`, data, {
+        withCredentials: true,
+      });
 
       navigate(`/blogs/${blog._id}`);
     } catch (error) {
@@ -142,12 +139,9 @@ function EditBlog() {
 
     if (userConfirmation) {
       try {
-        const res = await axios.delete(
-          `${import.meta.env.VITE_APP_API_URL}/blogs/${id}`,
-          {
-            withCredentials: true,
-          }
-        );
+        const res = await axios.delete(`${API_BASE_URL}/blogs/${id}`, {
+          withCredentials: true,
+        });
 
         if (res.status === 204) {
           showAlert("success", "Successfully deleted!", 2.5);
