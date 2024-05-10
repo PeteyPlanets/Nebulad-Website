@@ -256,29 +256,4 @@ async function getEmailFromDatabase(id) {
 //   testHtml
 // );
 
-async function addTimestampsToCategories() {
-  try {
-    const categories = await Category.find({ createdAt: { $exists: true } });
-    // for (const category of categories) {
-    //   category.createdAt = new Date();
-    //   category.updatedAt = new Date();
-    //   console.log("Before saving", category.createdAt);
-    //   console.log("Before saving", category.updatedAt);
-
-    //   await category.save();
-    //   console.log(`Updated category: ${category.title}`);
-    // }
-    console.log(
-      "All categories have been updated with timestamps.",
-      categories
-    );
-  } catch (error) {
-    console.error("Error updating categories:", error);
-  } finally {
-    mongoose.disconnect();
-  }
-}
-
-addTimestampsToCategories();
-
 export default sgMail;
