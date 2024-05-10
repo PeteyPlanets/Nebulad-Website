@@ -34,3 +34,4 @@ server/raffleHtml.html
 server/updateDbScript.js
 server/welcomeEmailTest.html
 server/testEmailStuff.js
+server/node_modules
