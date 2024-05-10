@@ -77,11 +77,11 @@ const Contact = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <i className={`fab fa-instagram ${styles.ig}`}></i> Instagram:{" "}
+              <i className={`fab fa-instagram ${styles.ig}`}></i>
               <span>@NebuladGraphics</span>
             </a>
             <a href="mailto:nebulad@gmail.com">
-              <i className={`fas fa-envelope ${styles.mail}`}></i> Email:{" "}
+              <i className={`fas fa-envelope ${styles.mail}`}></i>
               <span>Nebulad@gmail.com</span>
             </a>
             <a
@@ -89,7 +89,7 @@ const Contact = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <i className={`fab fa-facebook ${styles.fb}`}></i> Facebook:{" "}
+              <i className={`fab fa-facebook ${styles.fb}`}></i>
               <span>@NebuladGraphics</span>
             </a>
           </div>

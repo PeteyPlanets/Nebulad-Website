@@ -4,11 +4,20 @@ import { htmlToText } from "html-to-text";
 
 import axios from "axios";
 
-config({ path: "./config.env" });
-
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
 import { sendPromotionalEmail } from "./utils/email.js";
+import Category from "./models/Category.js";
+import mongoose from "mongoose";
+
+config({ path: "./config.env" });
+mongoose
+  .connect(process.env.DATABASE, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("Connection to DB successful!");
+  });
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const testHtml = `<!DOCTYPE html>
 <html lang="en">
@@ -223,24 +232,53 @@ async function getEmailsFromDatabase() {
     console.error("Error retrieving emails:", error);
   }
 }
-const emails = await getEmailsFromDatabase();
-let emailsArr = emails.map((obj) => obj.email);
+
+async function getEmailFromDatabase(id) {
+  try {
+    const response = await axios.get(`http://localhost:8000/api/emails/${id}`);
+    const subscriber = response.data.data.email;
+    return subscriber;
+  } catch (error) {
+    console.error("Error retrieving emails:", error);
+  }
+}
+// const emails = await getEmailsFromDatabase();
+// const petey = await getEmailFromDatabase("663b86406156b836e44a08d4");
+// console.log("Petey = ", petey);
+
+// sendPromotionalEmail(petey);
+// let emailsArr = emails.map((obj) => obj.email);
 // console.log(emailsArr);
 
-// emailsArr.forEach((email) => {
-//   testRaffleWinnerEmail(
-//     email,
-//     "Thank You for Participating in the Raffle!",
-//     losersHtml
-//   );
-// });
+// testRaffleWinnerEmail(
+//   "peter.faucella@gmail.com",
+//   "Thank You for Participating in the Raffle!",
+//   testHtml
+// );
 
-testRaffleWinnerEmail(
-  "peter.faucella@gmail.com",
-  "Thank You for Participating in the Raffle!",
-  testHtml
-);
+async function addTimestampsToCategories() {
+  try {
+    const categories = await Category.find({ createdAt: { $exists: true } });
+    // for (const category of categories) {
+    //   category.createdAt = new Date();
+    //   category.updatedAt = new Date();
+    //   console.log("Before saving", category.createdAt);
+    //   console.log("Before saving", category.updatedAt);
 
-// sendPromotionalEmail(emails[0]);
+    //   await category.save();
+    //   console.log(`Updated category: ${category.title}`);
+    // }
+    console.log(
+      "All categories have been updated with timestamps.",
+      categories
+    );
+  } catch (error) {
+    console.error("Error updating categories:", error);
+  } finally {
+    mongoose.disconnect();
+  }
+}
+
+addTimestampsToCategories();
 
 export default sgMail;

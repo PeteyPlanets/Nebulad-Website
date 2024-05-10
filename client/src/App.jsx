@@ -29,6 +29,7 @@ import ComingSoon from "./pages/ComingSoon";
 import Contact from "./pages/Contact";
 
 import useBlogs from "./hooks/useBlogs";
+import Unsubscribe from "./components/Auth/Unsubscribe";
 
 function App() {
   const { setUser, setLoading } = useUser();
@@ -63,6 +64,7 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/reset-password/:token" element={<ResetPassword />} />
+            <Route path="/unsubscribe/:id" element={<Unsubscribe />} />
 
             <Route path="/dashboard/*" element={<UserAccountPage />} />
 

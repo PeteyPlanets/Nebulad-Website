@@ -6,8 +6,9 @@ import { protect, restrictTo } from "../controllers/authController.js";
 import { uploadToS3 } from "../controllers/blogController.js";
 
 const router = Router();
+
 router.get("/", async (req, res) => {
-  const categories = await Category.find();
+  const categories = await Category.find().sort({ createdAt: 1 });
   res.status(200).json({
     status: "success",
     categories,

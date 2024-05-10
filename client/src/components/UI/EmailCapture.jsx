@@ -6,6 +6,7 @@ import { API_BASE_URL } from "../../apiConfig";
 const EmailCapture = ({ cta = "Notify Me", styles }) => {
   const [email, setEmail] = useState("");
   const [isValid, setIsValid] = useState(true);
+  const [isSending, setIsSending] = useState(false);
 
   const handleChange = (e) => {
     setEmail(e.target.value);
@@ -15,9 +16,11 @@ const EmailCapture = ({ cta = "Notify Me", styles }) => {
     e.preventDefault();
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    setIsValid(emailRegex.test(email));
+    const isValid = emailRegex.test(email);
+    setIsValid(isValid);
 
     if (isValid) {
+      setIsSending(true); // Start sending the email
       try {
         const res = await axios.post(`${API_BASE_URL}/emails`, {
           email,
@@ -28,12 +31,14 @@ const EmailCapture = ({ cta = "Notify Me", styles }) => {
         }
       } catch (error) {
         const errorMsg = error.response?.data?.message;
-        // ToDo: Logging for errorMsg
         showAlert(
           "error",
-          "An error occured submitting your email, pleas try again!"
+          errorMsg || "An error has occured, please try again!"
         );
       }
+
+      setIsSending(false);
+      setEmail("");
     }
   };
 
@@ -48,8 +53,8 @@ const EmailCapture = ({ cta = "Notify Me", styles }) => {
           className={`${styles.emailInput} ${!isValid ? styles.invalid : ""}`}
           placeholder="Enter your email"
         />
-        <button type="submit" className={styles.notifyBtn}>
-          {cta}
+        <button type="submit" className={styles.notifyBtn} disabled={isSending}>
+          {isSending ? "..." : cta}
         </button>
       </form>
       {!isValid && (

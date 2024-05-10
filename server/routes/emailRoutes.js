@@ -6,6 +6,7 @@ import {
   updateEmail,
   deleteEmail,
   sendContactEmail,
+  unsubscribeEmail,
 } from "../controllers/emailController.js";
 
 import { protect, restrictTo } from "../controllers/authController.js";
@@ -19,10 +20,11 @@ router
   .post(createEmail);
 
 router.route("/send-contact-email").post(sendContactEmail);
+router.route("/unsubscribe/:id").post(unsubscribeEmail);
 
 router
   .route("/:id")
-  .get(protect, restrictTo("admin"), getEmail)
+  .get(getEmail)
   .patch(protect, restrictTo("admin"), updateEmail)
   .delete(protect, restrictTo("admin"), deleteEmail);
 

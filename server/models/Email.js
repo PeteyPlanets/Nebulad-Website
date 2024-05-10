@@ -31,7 +31,7 @@ const emailSchema = new Schema({
     },
     required: false,
   },
-  unsubcribed: {
+  unsubscribed: {
     type: Boolean,
     default: false,
   },

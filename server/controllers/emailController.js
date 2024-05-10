@@ -1,6 +1,6 @@
 import Email from "../models/Email.js";
 import catchAsync from "../utils/catchAsync.js";
-import { sendEmail } from "../utils/email.js";
+import { sendEmail, sendWelcomeEmail } from "../utils/email.js";
 
 // Util functions
 const formatDateForTable = (timestamp) => {
@@ -41,7 +41,6 @@ export const getEmails = catchAsync(async (req, res, next) => {
 
 export const createEmail = catchAsync(async (req, res, next) => {
   const formattedDate = formatDateForTable(Date.now());
-
   const { email, name, phoneNumber, unsubscribed } = req.body;
 
   const newEmailData = {
@@ -55,6 +54,7 @@ export const createEmail = catchAsync(async (req, res, next) => {
   if (phoneNumber) newEmailData.phoneNumber = phoneNumber;
 
   const newEmail = await Email.create(newEmailData);
+  await sendWelcomeEmail(newEmail); // Send welcome email after creation
 
   res.status(201).json({
     status: "success",
@@ -110,4 +110,32 @@ export const sendContactEmail = catchAsync(async (req, res) => {
   res.status(200).json({
     status: "success",
   });
+});
+
+// Unsubscribe from email list
+export const unsubscribeEmail = catchAsync(async (req, res, next) => {
+  const emailId = req.params.id;
+
+  // Check if email is exists
+  const existingEmail = await Email.findById(emailId);
+  if (!existingEmail) {
+    return next(new AppError("No email found with that ID", 404));
+  }
+
+  console.log("here is the email: ", existingEmail);
+
+  // If already unsubscribed, inform the user
+  if (existingEmail.unsubscribed) {
+    return res.status(400).send("You are already unsubscribed.");
+  }
+
+  // Send user to homepage after unsubscribing
+  const email = await Email.findByIdAndUpdate(
+    emailId,
+    { unsubscribed: true },
+    { new: true }
+  );
+  console.log("You have successfully unsubscribed!");
+
+  res.send("You have been successfully unsubscribed.");
 });

@@ -46,14 +46,14 @@ function BlogList({ category, blogs, query }) {
     if (currentPage < Math.ceil(blogs.length / blogsPerPage)) {
       setCurrentPage(currentPage + 1);
       setActivePage(currentPage + 1);
-      localStorage.setItem("currentPage", newPage);
+      localStorage.setItem("currentPage", currentPage);
     }
   };
   const prevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
       setActivePage(currentPage - 1);
-      ocalStorage.setItem("currentPage", newPage);
+      localStorage.setItem("currentPage", currentPage);
     }
   };
 
