@@ -45,7 +45,7 @@ const MobileNav = () => {
               </Link>
             </li>
             <li>
-              <Link to="/store" onClick={() => setIsOpen(false)}>
+              <Link to="https://nebulad.com" onClick={() => setIsOpen(false)}>
                 <i className="fas fa-store"></i> Store
               </Link>
             </li>

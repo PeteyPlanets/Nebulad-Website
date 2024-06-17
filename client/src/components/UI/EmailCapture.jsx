@@ -25,12 +25,18 @@ const EmailCapture = ({ cta = "Notify Me", styles }) => {
         const res = await axios.post(`${API_BASE_URL}/emails`, {
           email,
         });
+        // Check if it's a new user or a returning one
+        const welcomeBackMsg = "Welcome back! Please check your email";
+        const newSubscriptionMsg = "Please check your email";
+        const alertMsg = res.data.newUser ? newSubscriptionMsg : welcomeBackMsg;
+        console.log("heres the alert message", alertMsg);
 
         if (res.data.status === "success") {
-          showAlert("success", "Please check your email", 2);
+          showAlert("success", alertMsg, 3);
         }
       } catch (error) {
         const errorMsg = error.response?.data?.message;
+
         showAlert(
           "error",
           errorMsg || "An error has occured, please try again!"

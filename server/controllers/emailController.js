@@ -1,4 +1,5 @@
 import Email from "../models/Email.js";
+import AppError from "../utils/appError.js";
 import catchAsync from "../utils/catchAsync.js";
 import { sendEmail, sendWelcomeEmail } from "../utils/email.js";
 
@@ -43,6 +44,40 @@ export const createEmail = catchAsync(async (req, res, next) => {
   const formattedDate = formatDateForTable(Date.now());
   const { email, name, phoneNumber, unsubscribed } = req.body;
 
+  const existingEmail = await Email.findOne({ email });
+  console.log("EXISTING EMAIL??? ", existingEmail);
+
+  if (existingEmail) {
+    if (existingEmail.unsubscribed) {
+      // User is re-subscribing
+      const updatedData = {
+        unsubscribed: false,
+        timestamp: Date.now(),
+        formattedDate: formatDateForTable(Date.now()),
+      };
+
+      if (name) updatedData.name = name;
+      if (phoneNumber) updatedData.phoneNumber = phoneNumber;
+
+      const updatedEmail = await Email.findByIdAndUpdate(
+        existingEmail._id,
+        updatedData,
+        { new: true }
+      );
+      await sendWelcomeEmail(updatedEmail); // Send welcome email to re-subscribed user
+
+      return res.status(200).json({
+        status: "success",
+        message: "Email re-subscribed successfully!",
+        data: { updatedEmail },
+        newUser: false,
+      });
+    } else {
+      // Email already exists and is subscribed
+      return next(new AppError("Email is already subscribed.", 409));
+    }
+  }
+
   const newEmailData = {
     email,
     timestamp: Date.now(),
@@ -61,6 +96,7 @@ export const createEmail = catchAsync(async (req, res, next) => {
     data: {
       newEmail,
     },
+    newUser: true,
   });
 });
 
