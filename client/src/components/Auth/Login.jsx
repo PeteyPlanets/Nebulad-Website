@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-
 import { useUser } from "../../context/UserContext";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -11,6 +10,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const { setUser, setLoading } = useUser();
   const navigate = useNavigate();
@@ -68,14 +68,29 @@ const Login = () => {
           </InputContainer>
           <InputContainer>
             <Label htmlFor="password">Password</Label>
-            <Input
-              type="password"
-              id="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
+            <PasswordWrapper>
+              <Input
+                type={showPassword ? "text" : "password"}
+                id="password"
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <span
+                onClick={() => setShowPassword((prev) => !prev)}
+                style={{
+                  position: "absolute",
+                  right: "1rem",
+                  cursor: "pointer",
+                  color: "#888",
+                }}
+              >
+                <i
+                  className={`fas ${showPassword ? "fa-eye-slash" : "fa-eye"}`}
+                ></i>
+              </span>
+            </PasswordWrapper>
           </InputContainer>
           <Button type="submit" disabled={isSubmitting}>
             {isSubmitting ? "Logging in..." : "Login"}
@@ -154,6 +169,12 @@ const Input = styled.input`
     outline: none;
     box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
   }
+`;
+
+const PasswordWrapper = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
 `;
 
 const Button = styled.button`

@@ -49,6 +49,10 @@ function NavLogin() {
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  };
+
   const handleMouseEnter = () => {
     if (!user) return;
     setShowDropdown(true);
@@ -86,26 +90,47 @@ function NavLogin() {
           }`}
         >
           <div className={styles.dropdownArrow}></div>
-          <Link to="/dashboard/profile" className={styles.dropdownMenuItem}>
+          <Link
+            to="/dashboard/profile"
+            className={styles.dropdownMenuItem}
+            onClick={scrollToTop}
+          >
             <i className="fas fa-user-edit" title="View Account"></i> Edit
             Profile
           </Link>
+
           <Link
             to="/dashboard/notifications"
             className={styles.dropdownMenuItem}
+            onClick={scrollToTop}
           >
             <i className="fas fa-bell"></i> Notifications
           </Link>
-          <Link to="/dashboard/favorites" className={styles.dropdownMenuItem}>
+
+          <Link
+            to="/dashboard/favorites"
+            className={styles.dropdownMenuItem}
+            onClick={scrollToTop}
+          >
             <i className="fas fa-heart"></i> Favorites
           </Link>
-          <Link to="/dashboard/settings" className={styles.dropdownMenuItem}>
+
+          <Link
+            to="/dashboard/settings"
+            className={styles.dropdownMenuItem}
+            onClick={scrollToTop}
+          >
             <i className="fas fa-cog"></i> Account Settings
           </Link>
 
-          <Link to="/help" className={styles.dropdownMenuItem}>
+          <Link
+            to="/help"
+            className={styles.dropdownMenuItem}
+            onClick={scrollToTop}
+          >
             <i className="fas fa-question-circle"></i> Help
           </Link>
+
           <button
             className={`${styles.dropdownMenuItem} ${styles.logoutBtn}`}
             onClick={() => logout(setUser)}

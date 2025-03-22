@@ -188,6 +188,14 @@
   transform: scale(5);
 }
 
+.btnsContainer {
+  width: 100%;
+  display: flex;
+  gap: 2.4rem;
+  justify-content: center;
+  margin-top: 2.4rem;
+}
+
 @media (max-width: 1080px) {
   .blog {
     padding: 6.4rem 9.6rem;

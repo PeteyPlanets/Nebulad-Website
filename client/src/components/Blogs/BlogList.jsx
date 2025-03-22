@@ -15,7 +15,7 @@ import styles from "./BlogList.module.css";
 // Util
 import extractTextFromHTML from "../../util/parseHTML";
 
-function BlogList({ category, blogs, query }) {
+function BlogList({ category, blogs, query, resetPaginationKey }) {
   const isMobile = useMediaQuery({ query: "(max-width: 800px)" });
   const { user, loading } = useUser();
   const navigate = useNavigate();
@@ -25,12 +25,22 @@ function BlogList({ category, blogs, query }) {
   const [blogsPerPage] = useState(9);
   const [activePage, setActivePage] = useState(1);
 
+  // Effect A: Always reset to page 1 explicitly on searches or category change
   useEffect(() => {
-    const savedPage = localStorage.getItem("currentPage");
-    const page = savedPage ? Number(savedPage) : 1;
-    setCurrentPage(page);
-    setActivePage(page);
-  }, [category, query]);
+    setCurrentPage(1);
+    setActivePage(1);
+    localStorage.setItem("currentPage", 1);
+  }, [resetPaginationKey, category, query]);
+
+  // Effect B: Only run on first mount if there's no query or reset key
+  useEffect(() => {
+    if (!query && !resetPaginationKey) {
+      const savedPage = localStorage.getItem("currentPage");
+      const page = savedPage ? Number(savedPage) : 1;
+      setCurrentPage(page);
+      setActivePage(page);
+    }
+  }, []);
 
   useEffect(() => {
     document.documentElement.scrollTop = 0; // Scrolling to the top of the window on page change

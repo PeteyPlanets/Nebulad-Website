@@ -142,13 +142,16 @@ export const sendPromotionalEmail = async (subscriber) => {
       <meta charset="UTF-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Promotional</title>
+      <title>Craft Fair</title>
     </head>
     <style>
       @media only screen and (max-width: 600px) {
         .mobile-padding {
           padding: 0 24px !important;
           border-radius: 8px !important;
+        }
+        .header-mobile {
+          font-size: 1.7rem;
         }
       }
     </style>
@@ -182,93 +185,38 @@ export const sendPromotionalEmail = async (subscriber) => {
             style="width: 250px"
           />
         </div>
-        <h1 style="color: #ffffff">Cradle Con is this weekend!</h1>
-        <p>
-          We had a blast meeting and interacting with you at last year's event and
-          hope to see you again this coming weekend.
+        <h1 class="header-mobile" style="color: #ffffff">
+          Sea Cliff Mini Mart is Sunday, October 6th!
+        </h1>
+        <p style="color: #ffffff">
+          We had a blast meeting and interacting with you at our previous events
+          and hope to see you again next Sunday.
         </p>
-        <p>
-          Check out some of our latest creations that will be featured at this
-          year's show. Show us this email at the show to receive a 10%
-          discount on any purchase.
+        <p style="color: #ffffff">
+          You can find us at booth 258 which is located between Central and Roslyn
+          Avenues, along Sea Cliff Avenue. Come see our
+          <a
+            style="color: #f54f15"
+            href="https://www.instagram.com/nebuladgraphics/"
+            target="_blank"
+            >latest creations</a
+          >
+          that will be featured at this event.
         </p>
+  
+        <img
+          src="https://nicky-blogs.s3.amazonaws.com/Emails/Mini_Mart_Ad_2024.jpg"
+          alt="Mini Mart Flyer"
+          class="mobile-padding"
+          style="
+            width: 100%;
+            max-width: 500px;
+            margin-top: 1.8rem;
+            border-radius: 8px;
+          "
+        />
+  
         <p><br /></p>
-  
-        <table
-          role="presentation"
-          width="100%"
-          border="0"
-          cellspacing="0"
-          cellpadding="0"
-          style="max-width: 600px;"
-        >
-          <tr>
-            <td style="padding: 5px; width: 50%;">
-              <img
-                src="https://nicky-blogs.s3.amazonaws.com/ImageSlider/Star_Wars_Coasters.jpg"
-                alt="Product 1"
-                style="width: 100%; max-width: 200px; border-radius: 8px; display: block; margin-left: auto; margin-right: auto;"
-              />
-            </td>
-            <td style="padding: 5px; width: 50%;">
-              <img
-                src="https://nicky-blogs.s3.amazonaws.com/ImageSlider/IMG_8663.HEIC"
-                alt="Product 2"
-                style="width: 100%; max-width: 200px; border-radius: 8px; display: block; margin-left: auto; margin-right: auto;"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td style="padding: 5px; width: 50%;">
-              <img
-                src="https://nicky-blogs.s3.amazonaws.com/ImageSlider/IMG_8665.HEIC"
-                alt="Product 3"
-                style="width: 100%; max-width: 200px; border-radius: 8px; display: block; margin-left: auto; margin-right: auto;"
-              />
-            </td>
-            <td style="padding: 5px; width: 50%;">
-              <img
-                src="https://nicky-blogs.s3.amazonaws.com/ImageSlider/IMG_8666.HEIC"
-                alt="Product 4"
-                style="width: 100%; max-width: 200px; border-radius: 8px; display: block; margin-left: auto; margin-right: auto;"
-              />
-            </td>
-          </tr>
-        </table>
-
-  
-        <div style="display: flex; justify-content: center; margin-top: 20px; margin-left: auto; margin-right: auto;">
-          <a
-            href="https://www.cradlecon.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            style="
-              padding: 10px 20px;
-              background-color: #f54f15;
-              color: #ffffff;
-              text-decoration: none;
-              border-radius: 5px;
-              font-size: 16px;
-              margin-right: 10px;
-            "
-            >Full Schedule</a
-          >
-          <a
-            href="https://www.cradleofaviation.org/plan_your_visit/cradle-con.html"
-            target="_blank"
-            rel="noopener noreferrer"
-            style="
-              padding: 10px 20px;
-              background-color: #f54f15;
-              color: #ffffff;
-              text-decoration: none;
-              border-radius: 5px;
-              font-size: 16px;
-            "
-            >Get Tickets</a
-          >
-        </div>
-  
         <p><br /></p>
         <p style="color: #ffffff">Best regards,</p>
         <p style="color: #ffffff">Nick Marino - Nebulad Graphics</p>
@@ -325,13 +273,12 @@ export const sendPromotionalEmail = async (subscriber) => {
         </p>
       </div>
     </body>
-  </html>
-  `;
+  </html>`;
 
   console.log("ABOUT TO SEND PROMO EMAIL to ", subscriber.email);
   await sendEmail(
     subscriber.email,
-    "Visit Our Table at Cradle Con!",
+    "Visit Our Booth at Sea Cliff Mini Mart!",
     htmlContent
   );
 };

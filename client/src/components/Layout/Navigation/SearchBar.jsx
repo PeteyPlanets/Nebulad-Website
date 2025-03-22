@@ -20,6 +20,7 @@ function SearchBar() {
   const handleSearch = (e) => {
     e.preventDefault();
     navigate(`/search?query=${searchTerm}`);
+    window.scrollTo({ top: 0, behavior: "instant" });
   };
 
   return (

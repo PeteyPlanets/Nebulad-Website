@@ -15,7 +15,7 @@ const RelatedContent = ({ related }) => {
             <Link className={styles.linkEl} to={`/blogs/${relatedBlog._id}`}>
               <div className={styles.textContainer}>
                 <h4>{relatedBlog.title}</h4>
-                <p>{relatedBlog.category.description}</p>
+                <p>{relatedBlog.description}</p>
               </div>
               <img src={relatedBlog.image} alt={relatedBlog.title} />
             </Link>

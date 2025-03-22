@@ -83,6 +83,16 @@
   z-index: 2;
 }
 
+.navLinks a.active,
+.navLinks a.active:hover {
+  color: #f54f15 !important;
+}
+
+.dropdownContent a.activeDropdownLink {
+  background-color: #bcbcbc;
+  color: #f54f15 !important;
+}
+
 @media screen and (max-width: 1380px) {
   .navLinks {
     gap: 1.6rem;

@@ -2,7 +2,7 @@ import { config } from "dotenv";
 import sgMail from "@sendgrid/mail";
 import { htmlToText } from "html-to-text";
 
-import axios from "axios";
+import axios, { all } from "axios";
 
 import { sendEmail, sendPromotionalEmail } from "./utils/email.js";
 import mongoose from "mongoose";
@@ -311,9 +311,15 @@ async function getEmailFromDatabase(id) {
 
 const petey = await getEmailFromDatabase("663ebadea54e6790559c1f4c");
 const nicky = await getEmailFromDatabase("6645255351483fb90640ec36");
-const ismael = await getEmailFromDatabase("664f4c2aecf977a386b0765b");
-// const allEmails = await getEmailsFromDatabase();
+const allEmails = await getEmailsFromDatabase();
 
-sendRaffleEmail(ismael, true);
+// sendRaffleEmail(petey, true);
+// console.log(nicky);
+// sendPromotionalEmail(nicky);
+
+allEmails.forEach((email) => {
+  // sendPromotionalEmail(email);
+  console.log(email.email);
+});
 
 export default sgMail;

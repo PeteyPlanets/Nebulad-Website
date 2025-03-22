@@ -25,7 +25,6 @@ const ChangePassword = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
 
     try {
       await axios.patch(`${API_BASE_URL}/users/updateMyPassword`, formData, {
@@ -34,8 +33,6 @@ const ChangePassword = () => {
       showAlert("success", "Password updated successfully");
     } catch (error) {
       console.log(error);
-      const errorMsg = error.response?.data?.message;
-      // ToDo: Logging for errorMsg
       showAlert("error", "Error updating password!");
     }
   };
@@ -58,14 +55,21 @@ const ChangePassword = () => {
             name="oldPassword"
             value={formData.oldPassword}
             onChange={handleChange}
-            placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+            placeholder="●●●●●●●●"
           />
-          <i
-            className={`fas fa-eye${showPasswords.oldPassword ? "-slash" : ""}`}
+          <span
             onClick={() => togglePasswordVisibility("oldPassword")}
-          ></i>
+            style={{ cursor: "pointer" }}
+          >
+            <i
+              className={`fas ${
+                showPasswords.oldPassword ? "fa-eye-slash" : "fa-eye"
+              }`}
+            ></i>
+          </span>
         </div>
       </div>
+
       <div className={styles.inputGroup}>
         <label htmlFor="newPassword">New Password</label>
         <div className={styles.eyeContainer}>
@@ -74,14 +78,21 @@ const ChangePassword = () => {
             name="newPassword"
             value={formData.newPassword}
             onChange={handleChange}
-            placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+            placeholder="●●●●●●●●"
           />
-          <i
-            className={`fas fa-eye${showPasswords.newPassword ? "-slash" : ""}`}
+          <span
             onClick={() => togglePasswordVisibility("newPassword")}
-          ></i>
+            style={{ cursor: "pointer" }}
+          >
+            <i
+              className={`fas ${
+                showPasswords.newPassword ? "fa-eye-slash" : "fa-eye"
+              }`}
+            ></i>
+          </span>
         </div>
       </div>
+
       <div className={styles.inputGroup}>
         <label htmlFor="confirmPassword">Confirm Password</label>
         <div className={styles.eyeContainer}>
@@ -90,16 +101,21 @@ const ChangePassword = () => {
             name="confirmPassword"
             value={formData.confirmPassword}
             onChange={handleChange}
-            placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+            placeholder="●●●●●●●●"
           />
-          <i
-            className={`fas fa-eye${
-              showPasswords.confirmPassword ? "-slash" : ""
-            }`}
+          <span
             onClick={() => togglePasswordVisibility("confirmPassword")}
-          ></i>
+            style={{ cursor: "pointer" }}
+          >
+            <i
+              className={`fas ${
+                showPasswords.confirmPassword ? "fa-eye-slash" : "fa-eye"
+              }`}
+            ></i>
+          </span>
         </div>
       </div>
+
       <button type="submit" className={styles.submitButton}>
         Update Password
       </button>

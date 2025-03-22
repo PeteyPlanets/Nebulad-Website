@@ -80,7 +80,11 @@ const Contact = () => {
               <i className={`fab fa-instagram ${styles.ig}`}></i>
               <span>@NebuladGraphics</span>
             </a>
-            <a href="mailto:nebulad@gmail.com">
+            <a
+              href="mailto:nebulad@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className={`fas fa-envelope ${styles.mail}`}></i>
               <span>Nebulad@gmail.com</span>
             </a>

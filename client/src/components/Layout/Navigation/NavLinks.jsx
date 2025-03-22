@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import useCategories from "../../../hooks/useCategories";
 
 import styles from "./NavLinks.module.css";
@@ -9,52 +9,73 @@ const NavLinks = () => {
 
   return (
     <ul className={`${styles.navLinks}`}>
+      <li>
+        <NavLink
+          to="/events"
+          title="Great Times!"
+          className={({ isActive }) => (isActive ? styles.active : undefined)}
+        >
+          Events
+        </NavLink>
+      </li>
+      <li>
+        <a
+          href="https://nebulad.com"
+          title="Shopify Store"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Store
+        </a>
+      </li>
       <li className={styles.dropdown}>
-        <Link
+        <NavLink
           to="/blogs/categories"
-          className={styles.dropbtn}
+          className={({ isActive }) =>
+            isActive ? `${styles.dropbtn} ${styles.active}` : styles.dropbtn
+          }
           title="View All Blogs"
         >
           Blogs
-        </Link>
+        </NavLink>
         <div className={styles.dropdownContent}>
           <div className={styles.dropdownArrow}></div>
           {categories.map((category) => (
-            <Link key={category._id} to={`/blogs/categories/${category._id}`}>
+            <NavLink
+              key={category._id}
+              to={`/blogs/categories/${category._id}`}
+              className={({ isActive }) =>
+                isActive ? styles.activeDropdownLink : undefined
+              }
+            >
               <img
                 src={category.image}
                 alt={`${category.title} avatar`}
                 className={styles.avatar}
               />
               {category.title}
-            </Link>
+            </NavLink>
           ))}
         </div>
       </li>
+
       <li>
-        <Link to="/events" title="Great Times!">
-          Events
-        </Link>
-      </li>
-      <li>
-        <Link to="/superheroes" title="Coming Soon!">
-          Superheroes
-        </Link>
-      </li>
-      <li>
-        <Link to="https://nebulad.com" title="Shopify Store">
-          Store
-        </Link>
-      </li>
-      <li>
-        <Link to="/about-me" title="About the Artist">
+        <NavLink
+          to="/about-me"
+          title="About the Artist"
+          className={({ isActive }) => (isActive ? styles.active : undefined)}
+        >
           About
-        </Link>
+        </NavLink>
       </li>
       <li>
-        <Link to="/contact" title="Get in touch">
+        <NavLink
+          to="/contact"
+          title="Get in touch"
+          className={({ isActive }) => (isActive ? styles.active : undefined)}
+        >
           Contact
-        </Link>
+        </NavLink>
       </li>
     </ul>
   );

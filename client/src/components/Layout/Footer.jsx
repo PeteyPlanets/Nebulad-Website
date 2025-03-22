@@ -84,6 +84,9 @@ const Footer = ({ recentBlogs, isLoading }) => {
                       key={blog._id}
                       className={styles.blogItem}
                       to={`/blogs/${blog._id}`}
+                      onClick={() =>
+                        window.scrollTo({ top: 0, behavior: "instant" })
+                      }
                     >
                       <img src={blog.blogListImage} alt={blog.title} />
                       <div className={styles.blogItemTextContainer}>

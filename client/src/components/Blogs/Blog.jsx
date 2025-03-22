@@ -12,9 +12,14 @@ import RelatedContent from "./RelatedContent";
 import MobileRelatedContent from "./MobileRelatedContent";
 import YoutubeEmbed from "../UI/YoutubeEmbed";
 import Loader from "../UI/Loader";
+import Button from "../UI/Button";
 
 // Util
 import getReleatedContent from "../../util/getRelatedContent";
+import {
+  getNextBlogInCountdown,
+  getPreviousBlogInCountdown,
+} from "../../util/getRelatedContent";
 import sanitizeContent from "../../util/sanitize";
 import { getHoomans } from "../../util/significantHoomans";
 import { showAlert } from "../../util/alerts";
@@ -92,8 +97,83 @@ const Blog = () => {
     return user && user.role === "admin";
   }, [user, loading]);
 
+  // ////////////////
+  // ===FUNCTIONS===
+  const getNextBlog = async () => {
+    let nextBlog;
+
+    try {
+      // 2) Get All Blogs
+      const res = await axios.get(`${API_BASE_URL}/blogs`);
+      const allBlogs = res.data.blogs;
+
+      // Filter allBlogs for blogs in current category
+      const currentCategoryBlogs = allBlogs.filter(
+        (b) => b.category.title === blog.category.title
+      );
+
+      const sortedBlogs = currentCategoryBlogs.sort((a, b) => {
+        return Date.parse(a.date) - Date.parse(b.date);
+      });
+
+      // Find index of current blog within currentCategoryBlogs
+      const index = sortedBlogs.findIndex((b) => b._id === blog._id);
+
+      // Next blog should be next blog in countdown or first blog of next countdown
+      if (index < sortedBlogs.length - 1) nextBlog = sortedBlogs[index + 1];
+      if (index === sortedBlogs.length - 1) {
+        nextBlog = getNextBlogInCountdown(blog, allBlogs);
+      }
+
+      return nextBlog;
+    } catch (error) {}
+  };
+  const getPrevBlog = async () => {
+    let prevBlog;
+
+    try {
+      // 2) Get All Blogs
+      const res = await axios.get(`${API_BASE_URL}/blogs`);
+      const allBlogs = res.data.blogs;
+
+      // Filter allBlogs for blogs in current category
+      const currentCategoryBlogs = allBlogs.filter(
+        (b) => b.category.title === blog.category.title
+      );
+
+      const sortedBlogs = currentCategoryBlogs.sort((a, b) => {
+        return Date.parse(a.date) - Date.parse(b.date);
+      });
+
+      // console.log("Sorted blogs!", sortedBlogs);
+
+      // Find index of current blog within currentCategoryBlogs
+      const index = sortedBlogs.findIndex((b) => b._id === blog._id);
+
+      // Previous blog should be last blog in countdown or last blog of previous countdown
+      if (index > 0) prevBlog = sortedBlogs[index - 1];
+      if (index === 0) {
+        prevBlog = getPreviousBlogInCountdown(blog, allBlogs);
+      }
+
+      return prevBlog;
+    } catch (error) {}
+  };
+
   const editBtnHandler = () => {
     navigate(`/edit-blog/${blog._id}`);
+  };
+
+  const nextBlogHandler = async () => {
+    let nextBlog = await getNextBlog();
+    navigate(`/blogs/${nextBlog._id}`);
+    window.scrollTo(0, 0);
+  };
+  const previousBlogHandler = async () => {
+    let prevBlog = await getPrevBlog();
+    console.log("Prev BLOG = ", prevBlog);
+    navigate(`/blogs/${prevBlog._id}`);
+    window.scrollTo(0, 0);
   };
 
   const getVideoUrl = () => {
@@ -179,6 +259,18 @@ const Blog = () => {
             dangerouslySetInnerHTML={{ __html: sanitizeContent(blog.content) }}
           />
           {blog.isMusicBlog && getVideoUrl()}
+          <div className={styles.btnsContainer}>
+            <Button
+              label="Previous Blog"
+              onClick={previousBlogHandler}
+              className="next-blog"
+            />
+            <Button
+              label="Next Blog"
+              onClick={nextBlogHandler}
+              className="primary"
+            />
+          </div>
         </div>
         <aside className={styles.aside}>
           <CategoryAside

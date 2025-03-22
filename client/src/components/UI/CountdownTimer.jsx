@@ -10,7 +10,7 @@ const CountdownTimer = () => {
   });
 
   useEffect(() => {
-    const countdownDate = new Date("May 18, 2024 10:00:00").getTime();
+    const countdownDate = new Date("May 17, 2025 10:00:00").getTime();
     const interval = setInterval(() => {
       const now = new Date().getTime();
       const distance = countdownDate - now;

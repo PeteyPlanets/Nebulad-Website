@@ -168,25 +168,59 @@ function getRandomMatchingBlogByArtist(
   return matchingBlogs[randomIndex];
 }
 
-function getNextBlogInCountdown(currentBlog, allBlogs) {
-  switch (currentBlog.category) {
+export function getNextBlogInCountdown(currentBlog, allBlogs) {
+  switch (currentBlog.category.title) {
     case "50 to 50":
-      return allBlogs.filter((blog) => blog.category === "51 to 51")[0];
+      return allBlogs.filter((blog) => blog.category.title === "51 to 51")[0];
 
     case "51 to 51":
-      return allBlogs.filter((blog) => blog.category === "52 to 52")[0];
+      return allBlogs.filter((blog) => blog.category.title === "52 to 52")[0];
 
     case "52 to 52":
-      return allBlogs.filter((blog) => blog.category === "53 to 53")[0];
+      return allBlogs.filter((blog) => blog.category.title === "53 to 53")[0];
 
     case "53 to 53":
-      return allBlogs.filter((blog) => blog.category === "54 to 54")[0];
+      return allBlogs.filter((blog) => blog.category.title === "54 to 54")[0];
 
     case "54 to 54":
-      return allBlogs.filter((blog) => blog.category === "55 to 55")[0];
+      return allBlogs.filter((blog) => blog.category.title === "55 to 55")[0];
 
     case "55 to 55":
-      return allBlogs.filter((blog) => blog.category === "50 to 50")[0];
+      return allBlogs.filter((blog) => blog.category.title === "50 to 50")[0];
+
+    default:
+      return currentBlog;
+  }
+}
+export function getPreviousBlogInCountdown(currentBlog, allBlogs) {
+  switch (currentBlog.category.title) {
+    case "50 to 50":
+      return currentBlog;
+
+    case "51 to 51":
+      return allBlogs
+        .filter((blog) => blog.category.title === "50 to 50")
+        .sort((a, b) => new Date(b.date) - new Date(a.date))[0];
+
+    case "52 to 52":
+      return allBlogs
+        .filter((blog) => blog.category.title === "51 to 51")
+        .sort((a, b) => new Date(b.date) - new Date(a.date))[0];
+
+    case "53 to 53":
+      return allBlogs
+        .filter((blog) => blog.category.title === "52 to 52")
+        .sort((a, b) => new Date(b.date) - new Date(a.date))[0];
+
+    case "54 to 54":
+      return allBlogs
+        .filter((blog) => blog.category.title === "53 to 53")
+        .sort((a, b) => new Date(b.date) - new Date(a.date))[0];
+
+    case "55 to 55":
+      return allBlogs
+        .filter((blog) => blog.category.title === "54 to 54")
+        .sort((a, b) => new Date(b.date) - new Date(a.date))[0];
 
     default:
       return currentBlog;

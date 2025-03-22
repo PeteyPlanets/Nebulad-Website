@@ -2,6 +2,8 @@ import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useUser } from "../../context/UserContext";
 
+// THIS IS THE SIDE NAVIGATION FOR THE ACCOUNT PROFILE SETTINGS
+
 // Components
 import Divider from "../UI/Divider";
 import Loader from "../UI/Loader";
@@ -42,12 +44,12 @@ const SideNav = () => {
             </NavLink>
           </li>
 
-          <li className={getListItemClass("/dashboard/notifications")}>
+          {/* <li className={getListItemClass("/dashboard/notifications")}>
             <NavLink to="/dashboard/notifications">
               <i className="fas fa-bell"></i>
               <span>Notifications</span>
             </NavLink>
-          </li>
+          </li> */}
           <li className={getListItemClass("/dashboard/favorites")}>
             <NavLink to="/dashboard/favorites">
               <i className="fas fa-heart"></i>
@@ -59,7 +61,7 @@ const SideNav = () => {
             <span className={styles.darkModeLabel}>Dark Mode</span>
             <ToggleSwitch />
           </li>
-          <li className={getListItemClass("/dashboard/subscription")}>
+          {/* <li className={getListItemClass("/dashboard/subscription")}>
             <NavLink to="/dashboard/subscription">
               <i className="fas fa-rocket"></i>
               <span>Subscription</span>
@@ -70,11 +72,11 @@ const SideNav = () => {
               <i className="fas fa-receipt"></i>
               <span>Creations</span>
             </NavLink>
-          </li>
+          </li> */}
           <li className={getListItemClass("/dashboard/settings")}>
             <NavLink to="/dashboard/settings">
               <i className="fas fa-cog"></i>
-              <span>Settings</span>
+              <span>Change Password</span>
             </NavLink>
           </li>
         </ul>

@@ -5,16 +5,19 @@ import Loader from "../components/UI/Loader";
 import useBlogs from "../hooks/useBlogs";
 
 const SearchPage = () => {
-  const query = new URLSearchParams(useLocation().search).get("query");
+  const location = useLocation();
+  const query = new URLSearchParams(location.search).get("query");
   const queryText = `Showing results for "${query}"`;
 
   const { blogs, blogsLoading } = useBlogs();
   const [filteredBlogs, setFilteredBlogs] = useState([]);
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+
     if (!blogsLoading) {
+      const lowerCaseQuery = query.toLowerCase();
       const result = blogs.filter((blog) => {
-        const lowerCaseQuery = query.toLowerCase();
         return (
           blog.title.toLowerCase().includes(lowerCaseQuery) ||
           blog.description.toLowerCase().includes(lowerCaseQuery) ||
@@ -26,10 +29,18 @@ const SearchPage = () => {
 
       setFilteredBlogs(result);
     }
-  }, [blogs, blogsLoading, query]);
+  }, [blogs, blogsLoading, location.key]); // <-- location.key ensures re-triggering each time!
 
   if (blogsLoading) return <Loader />;
-  return <BlogList blogs={filteredBlogs} category={null} query={queryText} />;
+
+  return (
+    <BlogList
+      blogs={filteredBlogs}
+      category={null}
+      query={queryText}
+      resetPaginationKey={location.key}
+    />
+  );
 };
 
 export default SearchPage;

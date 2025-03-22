@@ -21,9 +21,9 @@ const HeroSection = () => {
       <div className={styles.heroTextContainer}>
         <h5>Prepare For</h5>
         <h1>
-          Cradle Con <span>2024</span>
+          Cradle Con <span>2025</span>
         </h1>
-        <p>Long Island, Ny - May 18th &amp; 19th</p>
+        <p>Long Island, Ny - May 17th &amp; 18th</p>
 
         <div className={styles.btnContainer}>
           <a
