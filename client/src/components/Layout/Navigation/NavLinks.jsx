@@ -20,7 +20,7 @@ const NavLinks = () => {
       </li>
       <li>
         <a
-          href="https://nebulad.com"
+          href="https://nebulad.com/collections/super-frames"
           title="Shopify Store"
           target="_blank"
           rel="noopener noreferrer"

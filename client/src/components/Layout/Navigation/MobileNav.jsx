@@ -39,11 +39,11 @@ const MobileNav = () => {
                 <i className="fas fa-calendar"></i> Events
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/superheroes" onClick={() => setIsOpen(false)}>
                 <i className="fas fa-mask"></i> Superheroes
               </Link>
-            </li>
+            </li> */}
             <li>
               <a
                 href="https://nebulad.com"
@@ -51,7 +51,7 @@ const MobileNav = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Store
+                <i className="fas fa-store"></i> Store
               </a>
             </li>
             <li>

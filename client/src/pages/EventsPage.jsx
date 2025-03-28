@@ -10,7 +10,7 @@ const EventsPage = () => {
   return (
     <>
       <HeroSection />
-      <ComeSeeUs />
+      {/* <ComeSeeUs /> */}
       <ProductSection />
       <Gallery />
       <OtherVendors />

@@ -66,7 +66,10 @@ const SpaceBackground = () => {
   }, []);
 
   return (
-    <div ref={containerRef} style={{ position: "absolute", top: "-10vh" }} />
+    <div
+      ref={containerRef}
+      style={{ position: "absolute", top: "-10vh", pointerEvents: "none" }}
+    />
   );
 };
 

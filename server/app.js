@@ -8,6 +8,7 @@ import blogsRouter from "./routes/blogRoutes.js";
 import categoriesRouter from "./routes/categoryRoutes.js";
 import userRouter from "./routes/userRoutes.js";
 import emailRouter from "./routes/emailRoutes.js";
+import aboutRouter from "./routes/aboutRoutes.js";
 
 import globalErrorHandler from "./controllers/errorController.js";
 import AppError from "./utils/appError.js";
@@ -43,6 +44,7 @@ app.use("/api/blogs", blogsRouter);
 app.use("/api/categories", categoriesRouter);
 app.use("/api/users", userRouter);
 app.use("/api/emails", emailRouter);
+app.use("/api/about", aboutRouter);
 
 app.all("*", (req, res, next) => {
   next(

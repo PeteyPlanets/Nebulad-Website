@@ -3,6 +3,7 @@ import SpaceBackground from "../components/UI/SpaceBackground";
 import FeatureCard from "../components/UI/FeatureCard";
 import { Link } from "react-router-dom";
 import styles from "./HomePage.module.css";
+import EasterEgg from "../components/EasterEggs/EasterEgg";
 
 const HomePage = () => {
   return (
@@ -22,9 +23,10 @@ const HomePage = () => {
               Decoupage <span>Art</span>.
             </h1>
             <p>
-              Unleashing creative superpowers to harmonize the worlds of art,
-              design, and storytelling. Blending the magic of graphic design,
-              decoupage treasures, enthralling stories, and melodious tunes.
+              Welcome to my creative universe—where graphic design, decoupage
+              art, and storytelling collide. Whether I'm crafting a coaster, a
+              logo, or a paragraph, it's all powered by imagination (and maybe a
+              little caffeine).
             </p>
             <div className={styles.btnContainer}>
               <Link to={`/about-me`}>Learn More</Link>
@@ -67,6 +69,7 @@ const HomePage = () => {
           }
           type="events"
         />
+        <EasterEgg />
       </section>
     </>
   );

@@ -99,13 +99,13 @@ function NavLogin() {
             Profile
           </Link>
 
-          <Link
+          {/* <Link
             to="/dashboard/notifications"
             className={styles.dropdownMenuItem}
             onClick={scrollToTop}
           >
             <i className="fas fa-bell"></i> Notifications
-          </Link>
+          </Link> */}
 
           <Link
             to="/dashboard/favorites"
@@ -123,13 +123,13 @@ function NavLogin() {
             <i className="fas fa-cog"></i> Account Settings
           </Link>
 
-          <Link
+          {/* <Link
             to="/help"
             className={styles.dropdownMenuItem}
             onClick={scrollToTop}
           >
             <i className="fas fa-question-circle"></i> Help
-          </Link>
+          </Link> */}
 
           <button
             className={`${styles.dropdownMenuItem} ${styles.logoutBtn}`}

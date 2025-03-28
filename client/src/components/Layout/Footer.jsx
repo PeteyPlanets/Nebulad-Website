@@ -12,7 +12,7 @@ import Loader from "../UI/Loader";
 import customStyles from "../UI/EmailCaptureFooter.module.css";
 import styles from "./Footer.module.css";
 
-const Footer = ({ recentBlogs, isLoading }) => {
+const Footer = ({ recentBlogs, randomBlogs, isLoading }) => {
   const isMobile = useMediaQuery({ query: "(max-width: 800px)" });
 
   if (isLoading) return <Loader />;
@@ -75,10 +75,10 @@ const Footer = ({ recentBlogs, isLoading }) => {
                   className={`${styles.socialIcon} ${styles.blogIcon} fas fa-blog`}
                 ></i>
 
-                <h4>Latest Blogs</h4>
+                <h4>Random Blogs</h4>
               </div>
               <div className={styles.blogsContainer}>
-                {recentBlogs.map((blog) => {
+                {randomBlogs.map((blog) => {
                   return (
                     <Link
                       key={blog._id}

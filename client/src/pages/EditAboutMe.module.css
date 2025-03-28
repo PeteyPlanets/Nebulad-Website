@@ -1,0 +1,59 @@
+.formContainer {
+  margin: 15vh auto;
+  margin-bottom: 5vh;
+  padding: 4rem 3rem;
+  width: 100%;
+  max-width: 800px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 2.4rem;
+}
+
+.currentImage img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto 0 auto;
+}
+
+.quill {
+  font-size: 1.6rem;
+}
+
+.quill .ql-container {
+  min-height: 200px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.uploadButton,
+.saveButton {
+  padding: 1rem 1.6rem;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  background-color: #111;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  transition: all 0.3s;
+  width: 33%;
+  margin: 0 auto;
+}
+
+.uploadButton {
+  margin-bottom: 2.4rem;
+}
+
+.uploadButton:hover,
+.saveButton:hover {
+  background-color: #444;
+  cursor: pointer;
+}

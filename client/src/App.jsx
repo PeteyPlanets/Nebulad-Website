@@ -30,6 +30,7 @@ import Contact from "./pages/Contact";
 
 import useBlogs from "./hooks/useBlogs";
 import Unsubscribe from "./components/Auth/Unsubscribe";
+import EditAboutMe from "./pages/EditAboutMe";
 
 function App() {
   const { setUser, setLoading } = useUser();
@@ -39,6 +40,8 @@ function App() {
   const recentBlogs = blogs
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(0, 2);
+
+  const randomBlogs = blogs.sort(() => 0.5 - Math.random()).slice(0, 2);
 
   useEffect(() => {
     async function fetchUserData() {
@@ -80,6 +83,7 @@ function App() {
             <Route path="/superheroes" element={<ComingSoon />} />
 
             <Route path="/about-me" element={<AboutMe />} />
+            <Route path="/edit-about-me" element={<EditAboutMe />} />
             <Route path="/contact" element={<Contact />} />
 
             {/* <Route path="/playground" element={<Contact />} /> */}
@@ -88,7 +92,11 @@ function App() {
           </Routes>
         </main>
         <footer>
-          <Footer recentBlogs={recentBlogs} isLoading={blogsLoading} />
+          <Footer
+            recentBlogs={recentBlogs}
+            randomBlogs={randomBlogs}
+            isLoading={blogsLoading}
+          />
         </footer>
       </div>
     </BrowserRouter>

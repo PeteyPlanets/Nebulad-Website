@@ -1,65 +1,64 @@
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useUser } from "../context/UserContext";
+import axios from "axios";
+import { API_BASE_URL } from "../apiConfig";
 import styles from "./AboutMe.module.css";
 
 const AboutMe = () => {
+  const { user, loading } = useUser();
+  const navigate = useNavigate();
+
+  const [aboutData, setAboutData] = useState({ content: "", image: "" });
+
+  useEffect(() => {
+    const fetchAboutMe = async () => {
+      try {
+        const res = await axios.get(`${API_BASE_URL}/about`);
+        setAboutData(res.data.about || {});
+      } catch (err) {
+        console.error("Failed to load About Me content");
+      }
+    };
+
+    fetchAboutMe();
+  }, []);
+
+  const isAdmin = useMemo(() => {
+    if (loading) return false;
+    return user && user.role === "admin";
+  }, [user, loading]);
+
+  const editHandler = () => {
+    navigate("/edit-about-me");
+  };
+
   return (
     <section>
       <div className={styles.container}>
         <div className={styles.heroContainer}>
           <div className={styles.textContainer}>
             <h1>About Me</h1>
-            <h4>I'm a graphic designer and decoupage extraordinaire </h4>
-            <p>
-              As I sit down to write this "about me" entry, I can't help but
-              slip away into my usual daydreams. Perhaps it's my love for music
-              or the endless stream of social media posts, but I find myself
-              easily getting lost in my thoughts. In fact, you could say that
-              writing this very sentence is just a velvety disguised daydream.
-            </p>
-            <br />
-            <p>
-              My attention span can be abbreviated at times, and I often find
-              myself losing track of what I was saying mid-conversation. But
-              it's not all bad - my tendency to drift away means that I can
-              transport myself to different places in my mind at a moment's
-              notice. Whether it's the coastal charm of Provincetown, the rocky
-              cliffs of Montauk, or the peaceful woods of the Poconos, I can
-              escape to any destination I choose.
-            </p>
-            <br />
-            <p>
-              Despite being a grown man living in the 21st century, I often view
-              life through the lens of a 12-year-old boy. I tend to wish away
-              the present and yearn for the chance to redo certain moments, to
-              make different choices and seize every opportunity that comes my
-              way. I could write a handbook of missed opportunities.
-            </p>
-            <br />
-            <p>
-              But it's not just my own life that I think about. I believe in the
-              power of living eulogies - why wait until someone has passed away
-              to tell them how much they mean to you? I want to celebrate the
-              people I love while they're still here, to let them know just how
-              much they enrich my life and bring me joy.
-            </p>
-            <br />
-            <p>
-              And as for the end of my own journey? I like to think that, in a
-              way, it's already happening. Every day is a new chapter in my life
-              story, and I'm determined to make the most of each one. When I
-              take my last breath, I hope that I'll be able to look back on my
-              life with a sense of fulfillment, knowing that I made the most of
-              every opportunity and lived with no regrets.
-            </p>
+            <div dangerouslySetInnerHTML={{ __html: aboutData.content }} />
           </div>
           <div className={styles.heroImg}>
             <img
-              src="https://nicky-blogs.s3.amazonaws.com/Nicky/Nicky_Ai_Avatar.png"
+              src={
+                aboutData.image ||
+                "https://nicky-blogs.s3.amazonaws.com/Nicky/Nicky_Ai_Avatar.png"
+              }
               alt="Picture of me, Nicky Marino"
             />
           </div>
         </div>
+
+        {isAdmin && (
+          <button className={styles.editButton} onClick={editHandler}>
+            <i className="fas fa-edit"></i> Edit
+          </button>
+        )}
       </div>
+
       <div className={styles.timelineContainer}>
         <img
           className={styles.scrollImage}

@@ -11,7 +11,6 @@
   justify-content: center;
   color: #333;
   background-color: #fff;
-  height: calc(90vh - 200px);
   overflow: hidden;
 }
 
@@ -43,7 +42,7 @@
   margin-bottom: 2.4rem;
 }
 
-.textContainer p {
+.textContainer {
   font-size: 1.6rem;
   line-height: 1.6;
 }
@@ -84,6 +83,25 @@
   height: 100%;
   object-fit: cover;
   will-change: transform;
+}
+
+.editButton {
+  font-size: 1.6rem;
+  width: 25%;
+  margin: 4.8rem auto;
+  padding: 8px;
+  margin-bottom: 2.4rem;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  background-color: rgba(245, 79, 21);
+  background-image: url("data:image/svg+xml,..."); /* same bg pattern as blog */
+}
+
+.editButton:hover {
+  background-color: rgb(221, 86, 37);
 }
 
 @keyframes scroll {
