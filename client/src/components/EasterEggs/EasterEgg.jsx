@@ -6,6 +6,7 @@ const EasterEgg = () => {
   const [typed, setTyped] = useState("");
   const [showEgg, setShowEgg] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
+  const [shuffledImages, setShuffledImages] = useState([]);
 
   const rawImages = [
     "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHN3czBhdmxmN2d3ZW0yd2U4OWNhMjV1MW8wYTZ2aTJ2d3FvdjgwdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TIWYqtzg5wCCtc10Bi/giphy.gif",
@@ -49,8 +50,6 @@ const EasterEgg = () => {
     return arr;
   }
 
-  const shuffledImages = [rawImages[0], ...shuffle(rawImages.slice(1))];
-
   useEffect(() => {
     const triggerPhrase = "alwaysinallways";
 
@@ -59,6 +58,9 @@ const EasterEgg = () => {
       setTyped((prev) => {
         const next = (prev + char).slice(-triggerPhrase.length);
         if (next.toLowerCase() === triggerPhrase) {
+          const shuffled = [rawImages[0], ...shuffle(rawImages.slice(1))];
+          setShuffledImages(shuffled);
+          setImageIndex(0);
           setShowEgg(true);
         }
         return next;
