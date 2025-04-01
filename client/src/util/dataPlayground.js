@@ -9486,12 +9486,12 @@ function extractLinks(inputString) {
   return links || [];
 }
 
-export async function populateDB(newBlogs) {
-  newBlogs.forEach((blog) => {
-    axios.post("http://localhost:8000/api/blogs", blog, {
-      withCredentials: true,
-    });
-  });
-}
+// export async function populateDB(newBlogs) {
+//   newBlogs.forEach((blog) => {
+//     axios.post("http://localhost:8000/api/blogs", blog, {
+//       withCredentials: true,
+//     });
+//   });
+// }
 
 export default newBlogs;

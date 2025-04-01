@@ -40,6 +40,10 @@ app.use(express.static(path.join(__dirname, "public")));
 //   next();
 // });
 
+app.get("/", (req, res) => {
+  res.send("🛸 Nebulad API is live and healthy.");
+});
+
 app.use("/api/blogs", blogsRouter);
 app.use("/api/categories", categoriesRouter);
 app.use("/api/users", userRouter);

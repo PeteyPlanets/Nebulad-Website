@@ -39,6 +39,11 @@ const EasterEgg = () => {
     "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmhqeW5hOGI4ZDRpaDF5NjUycjQycHZjb3M5bTJrOGJkZ2l0ZWJsZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MagubuxVFLgiI/giphy.gif",
     "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3VkcWdjeDF5dGZucnB4cHh2bTkyMjJrbjY1bDdqM3ZtaXA4cjJ3cSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l2Sq42lWaExLwfAiI/giphy.gif",
     "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExdmo2MmZpa3kwNGpqNWJnMmZ1bTViZXZoMXE0NWxnc3JhbjJyNW9zeiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/iO1SXgxGMJnTxCmAKs/giphy.gif",
+    "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcGh6MGllNDBwam5pdDJ5azU4a2RrNDduNmhrZHUyd2VwaTV2cjYwNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o6Zt9MapEhDVITFpC/giphy.gif",
+    "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmhvdmtyaDV4bHJjbzhxNDZobGxwYW10d3NwNzVsNDF0cmlrcmtqaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7bucC2RWb4JBzKBW/giphy.gif",
+    "",
+    "",
+    "",
   ];
 
   function shuffle(array) {
