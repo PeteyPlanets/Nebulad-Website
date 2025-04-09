@@ -29,7 +29,25 @@ app.use(fileUpload());
 app.use(cookieParser());
 
 // enable CORS for all routes
-app.use(cors({ credentials: true, origin: process.env.FRONTEND_URL }));
+// app.use(cors({ credentials: true, origin: process.env.FRONTEND_URL }));
+
+const allowedOrigins = [
+  "https://nebulad.netlify.app",
+  "https://www.nebuladgraphics.com",
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
 
 // Allow server to serve static filesyy
 app.use(express.static(path.join(__dirname, "public")));
