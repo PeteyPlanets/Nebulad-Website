@@ -1,20 +1,20 @@
-import { config } from "dotenv";
-import sgMail from "@sendgrid/mail";
-import { htmlToText } from "html-to-text";
+import { config } from 'dotenv';
+import sgMail from '@sendgrid/mail';
+import { htmlToText } from 'html-to-text';
 
-import axios, { all } from "axios";
+import axios, { all } from 'axios';
 
-import { sendEmail, sendPromotionalEmail } from "./utils/email.js";
-import mongoose from "mongoose";
+import { sendEmail, sendPromotionalEmail } from './utils/email.js';
+import mongoose from 'mongoose';
 
-config({ path: "./config.env" });
+config({ path: './config.env' });
 mongoose
   .connect(process.env.DATABASE, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() => {
-    console.log("Connection to DB successful!");
+    console.log('Connection to DB successful!');
   });
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
@@ -279,23 +279,23 @@ const sendRaffleEmail = async (user, winner) => {
     
     `;
 
-  console.log("ABOUT TO SEND PROMO EMAIL to ", user.email);
+  console.log('ABOUT TO SEND PROMO EMAIL to ', user.email);
   await sendEmail(
     user.email,
     winner
-      ? "You’re the 2024 CradleCon Raffle Winner!"
-      : "Thanks for participating!",
+      ? 'You’re the 2024 CradleCon Raffle Winner!'
+      : 'Thanks for participating!',
     htmlContent
   );
 };
 
 async function getEmailsFromDatabase() {
   try {
-    const response = await axios.get("http://localhost:8000/api/emails");
+    const response = await axios.get('http://localhost:8000/api/emails');
     const emails = response.data.data.emails;
     return emails;
   } catch (error) {
-    console.error("Error retrieving emails:", error);
+    console.error('Error retrieving emails:', error);
   }
 }
 
@@ -305,19 +305,19 @@ async function getEmailFromDatabase(id) {
     const subscriber = response.data.data.email;
     return subscriber;
   } catch (error) {
-    console.error("Error retrieving emails:", error);
+    console.error('Error retrieving emails:', error);
   }
 }
 
-const petey = await getEmailFromDatabase("663ebadea54e6790559c1f4c");
-const nicky = await getEmailFromDatabase("6645255351483fb90640ec36");
+const petey = await getEmailFromDatabase('663ebadea54e6790559c1f4c');
+const nicky = await getEmailFromDatabase('6645255351483fb90640ec36');
 const allEmails = await getEmailsFromDatabase();
 
 // sendRaffleEmail(petey, true);
 // console.log(nicky);
 // sendPromotionalEmail(nicky);
 
-allEmails.forEach((email) => {
+allEmails.forEach(email => {
   // sendPromotionalEmail(email);
   console.log(email.email);
 });

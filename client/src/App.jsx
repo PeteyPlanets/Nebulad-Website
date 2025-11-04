@@ -1,36 +1,36 @@
-import React, { useEffect } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { useUser } from "./context/UserContext";
-import { checkLoggedInStatus } from "./util/login";
+import { useUser } from './context/UserContext';
+import { checkLoggedInStatus } from './util/login';
 
-import CategoriesPage from "./pages/CategoriesPage";
-import BlogsPage from "./pages/BlogsPage";
-import NavBar from "./components/Layout/Navigation/NavBar";
-import Blog from "./components/Blogs/Blog";
-import ErrorPage from "./pages/ErrorPage";
-import SignUp from "./components/Auth/SignUp";
-import Login from "./components/Auth/Login";
-import HomePage from "./pages/HomePage";
+import CategoriesPage from './pages/CategoriesPage';
+import BlogsPage from './pages/BlogsPage';
+import NavBar from './components/Layout/Navigation/NavBar';
+import Blog from './components/Blogs/Blog';
+import ErrorPage from './pages/ErrorPage';
+import SignUp from './components/Auth/SignUp';
+import Login from './components/Auth/Login';
+import HomePage from './pages/HomePage';
 
-import "react-quill/dist/quill.snow.css";
-import EditBlog from "./components/Blogs/EditBlog";
-import CreateBlog from "./components/Blogs/CreateBlog";
-import SearchPage from "./pages/SearchPage";
-import NewCategory from "./components/Blogs/NewCategory";
-import EditCategory from "./components/Blogs/EditCategory";
-import Footer from "./components/Layout/Footer";
-import ForgotPassword from "./components/Auth/ForgotPassword";
-import ResetPassword from "./components/Auth/ResetPassword";
-import UserAccountPage from "./pages/UserAccountPage";
-import EventsPage from "./pages/EventsPage";
-import AboutMe from "./pages/AboutMe";
-import ComingSoon from "./pages/ComingSoon";
-import Contact from "./pages/Contact";
+import 'react-quill/dist/quill.snow.css';
+import EditBlog from './components/Blogs/EditBlog';
+import CreateBlog from './components/Blogs/CreateBlog';
+import SearchPage from './pages/SearchPage';
+import NewCategory from './components/Blogs/NewCategory';
+import EditCategory from './components/Blogs/EditCategory';
+import Footer from './components/Layout/Footer';
+import ForgotPassword from './components/Auth/ForgotPassword';
+import ResetPassword from './components/Auth/ResetPassword';
+import UserAccountPage from './pages/UserAccountPage';
+import EventsPage from './pages/EventsPage';
+import AboutMe from './pages/AboutMe';
+import ComingSoon from './pages/ComingSoon';
+import Contact from './pages/Contact';
 
-import useBlogs from "./hooks/useBlogs";
-import Unsubscribe from "./components/Auth/Unsubscribe";
-import EditAboutMe from "./pages/EditAboutMe";
+import useBlogs from './hooks/useBlogs';
+import Unsubscribe from './components/Auth/Unsubscribe';
+import EditAboutMe from './pages/EditAboutMe';
 
 function App() {
   const { setUser, setLoading } = useUser();
@@ -46,7 +46,7 @@ function App() {
   useEffect(() => {
     async function fetchUserData() {
       const data = await checkLoggedInStatus(setUser);
-      console.log("isLoggedIn = ", data.isLoggedIn);
+      console.log('isLoggedIn = ', data.isLoggedIn);
 
       setLoading(false);
     }
@@ -56,9 +56,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <header>
-        <NavBar />
-      </header>
+      <NavBar />
       <div className="app-container">
         <main className="main-container">
           <Routes>
